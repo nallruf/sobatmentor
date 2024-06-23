@@ -1,13 +1,6 @@
 from django.db import models
+import bcrypt
 
-# Create your models here.
-from django.db import models
-
-# Create your models here.
-from django.db import models
-
-# Create your models here.
-from django.db import models
 
 class DetailTransaksi(models.Model):
     id = models.AutoField(primary_key=True)
@@ -58,8 +51,13 @@ class Pengguna(models.Model):
     email = models.EmailField()
     no_telp = models.CharField(max_length=255)
     sandi = models.CharField(max_length=255)
-    foto = models.CharField(max_length=255)
+    foto = models.ImageField(upload_to='foto_pengguna/', blank=True, null=True)
     role = models.CharField(max_length=10, choices=[('admin', 'admin'), ('USER', 'USER'), ('mentor', 'mentor')])
+
+    # def save(self, *args, **kwargs):
+    #     if self._state.adding:
+    #         self.sandi = bcrypt.hashpw(self.sandi.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.nama

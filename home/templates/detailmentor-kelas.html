@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" /> -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom.css' %}" />
+
+    <style>
+      .desktop {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .desktop .div {
+        background-color: #ffffff;
+        width: 1440px;
+        height: 1024px;
+        position: relative;
+      }
+
+      .desktop .navbar {
+        display: flex;
+        width: 1440px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--new-colors-background-bg-primary);
+      }
+
+      .desktop .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .desktop .img {
+        position: relative;
+        width: 38px;
+        height: 37px;
+      }
+
+      .desktop .text-wrapper {
+        position: relative;
+        width: fit-content;
+        font-family: "Inter-SemiBold", Helvetica;
+        font-weight: 600;
+        color: var(--new-colors-text-text-brand-tertiary);
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 24px;
+        white-space: nowrap;
+      }
+
+      .desktop .navbar-2 {
+        display: inline-flex;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .desktop .text-wrapper-2 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        color: var(--new-colors-text-text-primary);
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        white-space: nowrap;
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .desktop .button {
+        all: unset;
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px 24px;
+        position: relative;
+        flex: 0 0 auto;
+        border-radius: 8px;
+      }
+
+      .desktop .icons {
+        position: relative;
+        width: 24px;
+        height: 24px;
+      }
+
+      .desktop .button-2 {
+        all: unset;
+        box-sizing: border-box;
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: "Poppins-Medium", Helvetica;
+        font-weight: 500;
+        color: var(--new-colors-text-text-primary);
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 24px;
+        white-space: nowrap;
+      }
+
+      .desktop .footer {
+        display: flex;
+        flex-direction: column;
+        width: 1440px;
+        height: 230px;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 0px;
+        position: absolute;
+        top: 794px;
+        left: 0;
+        background-color: var(--new-token-brand-brand-900);
+      }
+
+      .desktop .frame {
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 144px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .desktop .frame-2 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .desktop .text-wrapper-3 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: var(--text-md-semibold-font-family);
+        font-weight: var(--text-md-semibold-font-weight);
+        color: var(--new-colors-text-text-white);
+        font-size: var(--text-md-semibold-font-size);
+        letter-spacing: var(--text-md-semibold-letter-spacing);
+        line-height: var(--text-md-semibold-line-height);
+        white-space: nowrap;
+        font-style: var(--text-md-semibold-font-style);
+      }
+
+      .desktop .text-wrapper-4 {
+        position: relative;
+        width: fit-content;
+        font-family: var(--text-sm-reguler-font-family);
+        font-weight: var(--text-sm-reguler-font-weight);
+        color: var(--new-colors-text-text-white);
+        font-size: var(--text-sm-reguler-font-size);
+        letter-spacing: var(--text-sm-reguler-letter-spacing);
+        line-height: var(--text-sm-reguler-line-height);
+        white-space: nowrap;
+        font-style: var(--text-sm-reguler-font-style);
+      }
+
+      .desktop .text-wrapper-5 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: var(--text-md-medium-font-family);
+        font-weight: var(--text-md-medium-font-weight);
+        color: var(--new-colors-text-text-white);
+        font-size: var(--text-md-medium-font-size);
+        letter-spacing: var(--text-md-medium-letter-spacing);
+        line-height: var(--text-md-medium-line-height);
+        white-space: nowrap;
+        font-style: var(--text-md-medium-font-style);
+      }
+
+      .desktop .frame-3 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .desktop .text-wrapper-6 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: var(--text-sm-reguler-font-family);
+        font-weight: var(--text-sm-reguler-font-weight);
+        color: var(--new-colors-text-text-white);
+        font-size: var(--text-sm-reguler-font-size);
+        letter-spacing: var(--text-sm-reguler-letter-spacing);
+        line-height: var(--text-sm-reguler-line-height);
+        white-space: nowrap;
+        font-style: var(--text-sm-reguler-font-style);
+      }
+
+      .desktop .frame-4 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .desktop .img-2 {
+        position: relative;
+        width: 16px;
+        height: 16px;
+      }
+
+      .desktop .line {
+        position: relative;
+        width: 1360px;
+        height: 1px;
+        object-fit: cover;
+      }
+
+      .desktop .p {
+        position: relative;
+        width: fit-content;
+        font-family: var(--text-xs-reguler-font-family);
+        font-weight: var(--text-xs-reguler-font-weight);
+        color: var(--new-colors-text-text-white);
+        font-size: var(--text-xs-reguler-font-size);
+        letter-spacing: var(--text-xs-reguler-letter-spacing);
+        line-height: var(--text-xs-reguler-line-height);
+        white-space: nowrap;
+        font-style: var(--text-xs-reguler-font-style);
+      }
+
+      .desktop .person-working {
+        position: absolute;
+        width: 409px;
+        height: 233px;
+        top: 182px;
+        left: 118px;
+        object-fit: cover;
+      }
+
+      .desktop .text-wrapper-7 {
+        position: absolute;
+        top: 437px;
+        left: 198px;
+        font-family: var(--display-md-semibold-font-family);
+        font-weight: var(--display-md-semibold-font-weight);
+        color: var(--new-colors-text-text-primary-duplicate);
+        font-size: var(--display-md-semibold-font-size);
+        letter-spacing: var(--display-md-semibold-letter-spacing);
+        line-height: var(--display-md-semibold-line-height);
+        white-space: nowrap;
+        font-style: var(--display-md-semibold-font-style);
+      }
+
+      .desktop .frame-5 {
+        position: absolute;
+        width: 657px;
+        height: 522px;
+        top: 196px;
+        left: 593px;
+      }
+
+      .desktop .lorem-ipsum-dolor {
+        position: absolute;
+        width: 574px;
+        top: 23px;
+        left: 34px;
+        font-family: "Poppins-Regular", Helvetica;
+        font-weight: 400;
+        color: #000000;
+        font-size: 16px;
+        letter-spacing: -0.32px;
+        line-height: 44px;
+      }
+
+      .desktop .element-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 24px;
+        position: absolute;
+        top: 209px;
+        left: 34px;
+        background-color: #1a4185;
+        border-radius: 8px;
+        box-shadow: var(--button-shadow);
+      }
+
+      .desktop .text-wrapper-8 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: var(--small-text-font-family);
+        font-weight: var(--small-text-font-weight);
+        color: #ffffff;
+        font-size: var(--small-text-font-size);
+        letter-spacing: var(--small-text-letter-spacing);
+        line-height: var(--small-text-line-height);
+        white-space: nowrap;
+        font-style: var(--small-text-font-style);
+      }
+
+      .desktop .element-tab-list {
+        display: flex;
+        width: 294px;
+        height: 96px;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 8px;
+        position: absolute;
+        top: 329px;
+        left: 11px;
+        background-color: #0000000d;
+        border-radius: 12px;
+      }
+
+      .desktop .sabtu-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px;
+        position: relative;
+        flex: 0 0 auto;
+        margin-bottom: -8px;
+        background-color: #ffffff;
+        border-radius: 8px;
+      }
+
+      .desktop .text-wrapper-9 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: var(--small-text-font-family);
+        font-weight: var(--small-text-font-weight);
+        color: #000000;
+        font-size: var(--small-text-font-size);
+        letter-spacing: var(--small-text-letter-spacing);
+        line-height: var(--small-text-line-height);
+        font-style: var(--small-text-font-style);
+      }
+
+      .desktop .minggu-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px;
+        position: relative;
+        flex: 0 0 auto;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+      }
+
+      .desktop .frame-6 {
+        position: relative;
+        flex: 0 0 auto;
+        margin-right: -22px;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+      }
+
+      .desktop .text-wrapper-10 {
+        position: absolute;
+        top: 270px;
+        left: 34px;
+        font-family: "Poppins-Medium", Helvetica;
+        font-weight: 500;
+        color: #000000;
+        font-size: 24px;
+        letter-spacing: -0.48px;
+        line-height: 44px;
+        white-space: nowrap;
+      }
+
+      .desktop .text-wrapper-11 {
+        position: absolute;
+        top: 483px;
+        left: 253px;
+        font-family: "Poppins-Regular", Helvetica;
+        font-weight: 400;
+        color: #000000;
+        font-size: 16px;
+        letter-spacing: -0.32px;
+        line-height: 44px;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="desktop">
+      <div class="div">
+        <div class="navbar">
+          <div class="logo">
+            <img class="img" src="logo-1.png" />
+            <div class="text-wrapper">Sobat Mentor</div>
+          </div>
+          <div class="navbar-2">
+            <div class="text-wrapper-2">Home</div>
+            <div class="text-wrapper-2">Cari Mentor</div>
+            <div class="text-wrapper-2">Cari Kelas</div>
+            <div class="text-wrapper-2">Jadi Mentor</div>
+          </div>
+          <button class="button"><img class="icons" src="icons.svg" /> <button class="button-2">Hai, Ima</button></button>
+        </div>
+        <footer class="footer">
+          <div class="frame">
+            <div class="frame-2">
+              <div class="text-wrapper-3">Sobat Mentor</div>
+              <p class="text-wrapper-4">Solusi mentor tepat untuk mimpi yang hebat.</p>
+            </div>
+            <div class="frame-2">
+              <div class="text-wrapper-5">Services</div>
+              <div class="frame-3">
+                <div class="text-wrapper-6">Home</div>
+                <div class="text-wrapper-4">Cari Mentor</div>
+                <div class="text-wrapper-4">Cari Kelas</div>
+                <div class="text-wrapper-4">Jadi Mentor</div>
+              </div>
+            </div>
+            <div class="frame-2">
+              <div class="text-wrapper-5">Contact</div>
+              <div class="frame-2">
+                <div class="frame-4">
+                  <img class="img-2" src="whats-app.svg" />
+                  <div class="text-wrapper-6">Admin</div>
+                </div>
+                <div class="frame-4">
+                  <img class="images-2" src="image.svg" />
+                  <div class="text-wrapper-6">pesansobatmentor@gmail.com</div>
+                </div>
+                <div class="frame-4">
+                  <img class="img-2" src="instagram.svg" />
+                  <div class="text-wrapper-6">sobatmentor</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img class="line" src="line-1.svg" />
+          <p class="p">Copyright © Sobat Mentor 2024</p>
+        </footer>
+        <img class="person-working" src="person-working-office-1.svg" />
+        <div class="text-wrapper-7">Writting Class</div>
+        <div class="frame-5">
+          <p class="lorem-ipsum-dolor">
+            &#34;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat... “
+          </p>
+          <div class="element-button"><div class="text-wrapper-8">Unduh Silabus</div></div>
+          <div class="element-tab-list">
+            <div class="sabtu-wrapper">
+              <div class="text-wrapper-9">Sabtu<br />09.00-10.00<br />13.00-14.00</div>
+            </div>
+            <div class="minggu-wrapper">
+              <div class="text-wrapper-9">Minggu<br />13,00-14.00</div>
+            </div>
+            <div class="frame-6"></div>
+          </div>
+          <div class="text-wrapper-10">Available Class</div>
+        </div>
+        <div class="text-wrapper-11">by Liliana Devina</div>
+      </div>
+    </div>
+  </body>
+</html>

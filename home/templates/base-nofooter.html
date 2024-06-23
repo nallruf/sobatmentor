@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Landing Page{% endblock %} | Sobat Mentor</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom.css' %}" />
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="content">
+        {% block content %}
+        <!-- Main content will go here -->
+        {% endblock %}    
+    </div>
+</body>
+</html>

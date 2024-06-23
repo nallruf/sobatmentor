@@ -12,10 +12,26 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import pymysql
+import datetime
+import os
+
 pymysql.install_as_MySQLdb()    
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+
+
+SECRET_KEY = '9e9018fe1c58c688083adfff9f5d35ce904823708d2d7a7304e86d1bb8910c0c5de9d72bddbfcf4e3aa83e7a5fd9cd9d1db74a2335f20b887bcdd3f71f1f6b0f'  # Ganti dengan secret key Anda
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+}
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -86,6 +102,11 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    
+]
 
 
 # Password validation

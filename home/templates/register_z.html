@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="nama">Nama:</label><br>
+        <input type="text" id="nama" name="nama"><br>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="no_telp">No Telp:</label><br>
+        <input type="text" id="no_telp" name="no_telp"><br>
+        <label for="sandi">Sandi:</label><br>
+        <input type="password" id="sandi" name="sandi"><br>
+        <label for="foto">Foto:</label><br>
+        <input type="file" id="foto" name="foto"><br>
+        <label for="role">Role:</label><br>
+        <select id="role" name="role">
+            <option value="USER">USER</option>
+            <option value="admin">admin</option>
+            <option value="mentor">mentor</option>
+        </select><br><br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

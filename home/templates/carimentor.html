@@ -1,0 +1,121 @@
+<!-- mentorapp/templates/mentorapp/mentor_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Mentor</title>
+</head>
+<body>
+    <h1>Daftar Mentor</h1>
+    <ul>
+        <!-- {% for mentor in mentors %}
+            <li>
+                Nama: {{ mentor.id_pengguna.nama_pengguna }}<br>
+                Universitas: {{ mentor.universitas }}<br>
+                Program Studi: {{ mentor.program_studi }}<br>
+                Semester: {{ mentor.semester }}<br>
+                NIM: {{ mentor.nim }}<br>
+                LinkedIn: <a href="{{ mentor.linkedin }}">{{ mentor.linkedin }}</a><br>
+                Instagram: <a href="{{ mentor.instagram }}">{{ mentor.instagram }}</a><br>
+                Status: {{ mentor.status }}
+            </li>
+        {% endfor %} -->
+
+        <!-- {
+          "mentors": [
+              {
+                  "id_mentor": 1,
+                  "tgl_bergabung": "2023-01-01",
+                  "tempat_tanggal_lahir": "Jakarta, 1990-01-01",
+                  "jenis_kelamin": "L",
+                  "alamat": "Jl. Menteng No. 2",
+                  "domisili": "Jakarta",
+                  "universitas": "Universitas XYZ",
+                  "program_studi": "Teknik Elektro",
+                  "semester": "8",
+                  "nim": "0987654321",
+                  "linkedin": "linkedin.com/johndoe",
+                  "instagram": "@johndoe",
+                  "status": "aktif",
+                  "pengguna": {
+                      "id_pengguna": 1,
+                      "nama_pengguna": "John Doe",
+                      "username": "johndoe",
+                      "email": "johndoe@example.com",
+                      "no_telp": "123456789",
+                      "sandi": "hashedpassword",
+                      "foto": "profile_images/johndoe.jpg",
+                      "role": "mentor"
+                  }
+              },
+              {
+                  "id_mentor": 2,
+                  "tgl_bergabung": "2023-01-02",
+                  "tempat_tanggal_lahir": "Bandung, 1992-02-02",
+                  "jenis_kelamin": "P",
+                  "alamat": "Jl. Dago No. 4",
+                  "domisili": "Bandung",
+                  "universitas": "Universitas ABC",
+                  "program_studi": "Teknik Informatika",
+                  "semester": "6",
+                  "nim": "1234567890",
+                  "linkedin": "linkedin.com/janesmith",
+                  "instagram": "@janesmith",
+                  "status": "aktif",
+                  "pengguna": {
+                      "id_pengguna": 2,
+                      "nama_pengguna": "Jane Smith",
+                      "username": "janesmith",
+                      "email": "janesmith@example.com",
+                      "no_telp": "987654321",
+                      "sandi": "hashedpassword",
+                      "foto": "profile_images/janesmith.jpg",
+                      "role": "mentor"
+                  }
+              },
+              {
+                  "id_mentor": 3,
+                  "tgl_bergabung": "2023-01-02",
+                  "tempat_tanggal_lahir": "1",
+                  "jenis_kelamin": "a",
+                  "alamat": "a",
+                  "domisili": "a",
+                  "universitas": "aa",
+                  "program_studi": "aaaaa",
+                  "semester": "a",
+                  "nim": "a",
+                  "linkedin": "a",
+                  "instagram": "a",
+                  "status": "a",
+                  "pengguna": {
+                      "id_pengguna": 3,
+                      "nama_pengguna": "a",
+                      "username": "aa",
+                      "email": "a",
+                      "no_telp": "aaaaa",
+                      "sandi": "a",
+                      "foto": "a",
+                      "role": "a"
+                  }
+              }
+          ]
+      } -->
+         <!-- print data json diatas dibawah ini menggunakn  for loop -->
+          <!-- ambil dari variable data data bkn manual -->
+
+          {% for mentor in mentors %}
+            <li>
+                Nama: {{ mentor.pengguna.nama_pengguna }}<br>
+                Universitas: {{ mentor.universitas }}<br>
+                Program Studi: {{ mentor.program_studi }}<br>
+                Semester: {{ mentor.semester }}<br>
+                NIM: {{ mentor.nim }}<br>
+                LinkedIn: <a href="{{ mentor.linkedin }}">{{ mentor.linkedin }}</a><br>
+                Instagram: <a href="{{ mentor.instagram }}">{{ mentor.instagram }}</a><br>
+                Status: {{ mentor.status }}
+            </li>
+
+        {% endfor %}
+    </ul>
+</body>
+</html>

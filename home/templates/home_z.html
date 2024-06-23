@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Selamat datang, {{ pengguna.username }}</h2>
+    <a href="{% url 'logout' %}">Logout</a>
+
+    <h3>Statistik</h3>
+    <p>Total Mentor: {{ total_mentor }}</p>
+    <p>Total Kelas: {{ total_kelas }}</p>
+
+    <h3>Kategori Kelas</h3>
+    <ul>
+        {% for kategori in list_kategori %}
+            <li>{{ kategori.nama_kategori }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Top 3 Mentor</h3>
+    <ul>
+        {% for mentor in top_mentors %}
+            <li>
+                <img src="{{ mentor.foto_pengguna }}" alt="{{ mentor.pengguna.nama }}" width="100">
+                <h4>{{ mentor.pengguna.nama }}</h4>
+                <p>Salah satu kelas yang diajar: {{ mentor.salah_satu_kelas.nama_kelas }}</p>
+                <p>Total kelas yang diajar: {{ mentor.total_kelas }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
