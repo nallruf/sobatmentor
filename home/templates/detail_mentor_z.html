@@ -79,5 +79,20 @@
         {% endfor %}
     </ul>
 
+    <h3>Penilaian Kelas yang Diampu</h3>
+    {% if penilaian_list %}
+        <ul>
+            {% for penilaian in penilaian_list %}
+                <li>
+                    <p>Kelas: {{ penilaian.kelas.nama_kelas }}</p>
+                    <p>Penilaian: {{ penilaian.penilaian }} bintang</p>
+                    <p>Komentar: "{{ penilaian.komentar }}"</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tidak ada penilaian untuk kelas yang diampu mentor ini.</p>
+    {% endif %}
+
 </body>
 </html>

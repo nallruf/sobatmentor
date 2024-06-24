@@ -3,7 +3,7 @@
 from django.contrib.auth.hashers import make_password, check_password
 import jwt
 import datetime
-# import bcrypt
+import bcrypt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
@@ -20,21 +20,40 @@ def register_view(request):
         return redirect('home')
     
 
+    # if request.method == 'POST':
+    #     nama = request.POST.get('nama')
+    #     username = request.POST.get('username')
+    #     email = request.POST.get('email')
+    #     no_telp = request.POST.get('no_telp')
+    #     sandi = request.POST.get('sandi')
+    #     foto = request.FILES.get('foto')
+    #     role = request.POST.get('role')
+
+        # Hash the password before saving and decode to string
+        # hashed_password = bcrypt.hashpw(sandi.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    #     pengguna = Pengguna(nama=nama, username=username, email=email, no_telp=no_telp, sandi=sandi, foto=foto, role=role)
+    #     pengguna.save()
+
+    #     return redirect('login')
+
+    # return render(request, 'register_z.html')
+
     if request.method == 'POST':
-        nama = request.POST.get('nama')
+        nama_pengguna = request.POST.get('nama')
         username = request.POST.get('username')
         email = request.POST.get('email')
         no_telp = request.POST.get('no_telp')
         sandi = request.POST.get('sandi')
-        foto = request.FILES.get('foto')
-        role = request.POST.get('role')
+        role = "user"
 
-        # Hash the password before saving and decode to string
-        # hashed_password = bcrypt.hashpw(sandi.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-        pengguna = Pengguna(nama=nama, username=username, email=email, no_telp=no_telp, sandi=sandi, foto=foto, role=role)
-        pengguna.save()
-
-        return redirect('login')
+        if nama_pengguna and username and email and no_telp and sandi:
+            if Pengguna.objects.filter(email=email).exists():
+                return render(request, 'register_z.html', {'error': 'Email sudah digunakan'})
+            
+            hashed_password = bcrypt.hashpw(sandi.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            pengguna = Pengguna(nama=nama_pengguna, username=username, email=email, no_telp=no_telp, sandi=hashed_password, role=role)
+            pengguna.save()
+            return redirect('login')
 
     return render(request, 'register_z.html')
 
@@ -54,8 +73,8 @@ def login_view(request):
             return HttpResponse('Invalid username or password', status=400)
 
         # Verifikasi password        if bcrypt.checkpw(sandi.encode('utf-8'), pengguna.sandi.encode('utf-8')):
-        # if bcrypt.checkpw(sandi.encode('utf-8'), pengguna.sandi.encode('utf-8')):
-        if (sandi == pengguna.sandi):
+        if bcrypt.checkpw(sandi.encode('utf-8'), pengguna.sandi.encode('utf-8')):
+        # if (sandi == pengguna.sandi):
             # Buat payload JWT
             payload = {
                 'id': pengguna.id,
@@ -153,6 +172,8 @@ def detail_mentor_view(request, mentor_id):
     kontak = KontakMentor.objects.get(mentor=mentor)
     skills_list = skill_mentor.objects.filter(mentor=mentor)
     projects_list = project_mentor.objects.filter(mentor=mentor)
+    penilaian_list = Penilaian.objects.filter(kelas__mentor=mentor)
+
 
     for kelas in kelas_list:
         kelas.jumlah_jadwal = PaketKelas.objects.filter(id_kelas=kelas).count()
@@ -165,6 +186,7 @@ def detail_mentor_view(request, mentor_id):
         'kontak': kontak,
         'skills_list': skills_list,
         'projects_list': projects_list,
+        'penilaian_list': penilaian_list,
     }
 
     return render(request, 'detail_mentor_z.html', context)
@@ -293,7 +315,7 @@ def upload_bukti_pembayaran(request, transaksi_id):
             messages.error(request, 'Gagal mengunggah bukti pembayaran.')
 
     # Redirect kembali ke halaman mentoring aktip setelah proses upload
-    return redirect('aktifitas')
+    return redirect('aktifitas  ')
 
 
 def index_view(request):
