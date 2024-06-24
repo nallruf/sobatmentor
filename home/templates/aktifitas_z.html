@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentoring Aktip</title>
+</head>
+<body>
+    <h1>Daftar Transaksi Mentoring Aktip</h1>
+    
+    {% if transaksi_list %}
+        <ul>
+            {% for transaksi in transaksi_list %}
+                <li>
+                    <h2>{{ transaksi.detailtransaksi_set.first.kelas.nama_kelas }}</h2>
+                    <p>ID Kelas: {{ transaksi.detailtransaksi_set.first.kelas.id }}</p>
+                    <p>Deskripsi Kelas: {{ transaksi.detailtransaksi_set.first.kelas.deskripsi }}</p>
+                    <p>Jumlah Pertemuan: {{ transaksi.detailtransaksi_set.first.paket_kelas.jumlah_pertemuan }}</p>
+                    <p>Jadwal Pertemuan: {{ transaksi.detailtransaksi_set.first.paket_kelas.hari }}, {{ transaksi.detailtransaksi_set.first.paket_kelas.jam }}</p>
+                    <p>Silabus: {{ transaksi.detailtransaksi_set.first.kelas.silabus }}</p>
+                    
+                    <!-- Data Mentor -->
+                    <h3>Data Mentor</h3>
+                    <p>Nama Mentor: {{ transaksi.detailtransaksi_set.first.kelas.mentor.pengguna.nama }}</p>
+                    <p>ID Mentor: {{ transaksi.detailtransaksi_set.first.kelas.mentor.id }}</p>
+                    <p>Kontak Mentor:
+                        <ul>
+                            <li>LinkedIn: {{ transaksi.detailtransaksi_set.first.kelas.mentor.kontakmentor_set.first.linkedin }}</li>
+                            <li>Instagram: {{ transaksi.detailtransaksi_set.first.kelas.mentor.kontakmentor_set.first.instagram }}</li>
+                        </ul>
+                    </p>
+
+                    <!-- Status Transaksi -->
+                    <p>Status Transaksi: {{ transaksi.status }}</p>
+                    
+                    {% if transaksi.status == 'menunggu' %}
+                        <!-- Tambahkan logika atau tampilan khusus untuk status 'menunggu' -->
+                    {% elif transaksi.status == 'belum lunas' %}
+                        <p>Nama Bank Mentor: {{ transaksi.metode_pembayaran.metode_pembayaran }}</p>
+                        <p>Nomor Rekening Mentor: {{ transaksi.metode_pembayaran.nomor_rekening }}</p>
+                        <!-- Form untuk upload bukti pembayaran -->
+                        <form action="{% url 'upload_bukti_pembayaran' transaksi.id %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="file" name="bukti_pembayaran" required>
+                            <button type="submit">Unggah</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tidak ada transaksi mentoring aktip saat ini.</p>
+    {% endif %}
+</body>
+</html>

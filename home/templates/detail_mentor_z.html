@@ -1,0 +1,98 @@
+<!-- templates/detail_mentor.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Mentor</title>
+</head>
+<body>
+    <h1>Detail Mentor</h1>
+    <div>
+        <img src="{{ mentor.pengguna.foto }}" alt="{{ mentor.pengguna.nama }}">
+        <h2>{{ mentor.pengguna.nama }}</h2>
+        <p>{{ mentor.bio }}</p>
+        <p>LinkedIn: <a href="{{ kontak.linkedin }}">{{ kontak.linkedin }}</a></p>
+        <p>Instagram: <a href="{{ kontak.instagram }}">{{ kontak.instagram }}</a></p>
+    </div>
+
+    <h3>Kelas</h3>
+    <ul>
+        {% for kelas in kelas_list %}
+        <li>
+            <a href="{% url 'detail_kelas' kelas.id %}">{{ kelas.nama_kelas }}</a>
+            <p>{{ kelas.deskripsi }}</p>
+            <p>{{ kelas.tipe_kelas}}</p>
+            <p><p>Jumlah Jadwal Tersedia: {{ kelas.jumlah_jadwal }}</p></p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>About Mentor</h3>
+    <p>Nama: {{ mentor.pengguna.nama }}</p>
+    <p>Jenis Kelamin: {{ mentor.jenis_kelamin }}</p>
+    <p>Usia: {{ mentor.usia }}</p>
+    <p>Domisili: {{ mentor.domisili }}</p>
+    <p>Video Profile: {{ mentor.video_profile }}</p>
+
+    <h3>Pengalaman Kerja</h3>
+    <ul>
+        {% for pengalaman in pengalaman_kerja_list %}
+        <li>
+            <p>Nama: {{ pengalaman.nama }}</p>
+            <p>Tempat: {{ pengalaman.tempat }}</p>
+            <p>Waktu: {{ pengalaman.waktu }}</p>
+            <p>Keahlian: {{ pengalaman.keahlian }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Pengalaman Mengajar</h3>
+    <ul>
+        {% for pengalaman in pengalaman_mengajar_list %}
+        <li>
+            <p>Nama: {{ pengalaman.nama }}</p>
+            <p>Tempat: {{ pengalaman.tempat }}</p>
+            <p>Waktu: {{ pengalaman.waktu }}</p>
+            <p>Keahlian: {{ pengalaman.keahlian }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Skills</h3>
+    <ul>
+        {% for skill in skills_list %}
+        <li>
+            <p>Nama: {{ skill.skill.nama }}</p>
+            <img src="{{ skill.skill.foto }}" alt="{{ skill.skill.nama }}">
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Projects</h3>
+    <ul>
+        {% for project in projects_list %}
+        <li>
+            <p>Nama: {{ project.nama }}</p>
+            <img src="{{ project.foto }}" alt="{{ project.nama }}">
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Penilaian Kelas yang Diampu</h3>
+    {% if penilaian_list %}
+        <ul>
+            {% for penilaian in penilaian_list %}
+                <li>
+                    <p>Kelas: {{ penilaian.kelas.nama_kelas }}</p>
+                    <p>Penilaian: {{ penilaian.penilaian }} bintang</p>
+                    <p>Komentar: "{{ penilaian.komentar }}"</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tidak ada penilaian untuk kelas yang diampu mentor ini.</p>
+    {% endif %}
+
+</body>
+</html>

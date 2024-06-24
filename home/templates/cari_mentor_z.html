@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cari Mentor</title>
+</head>
+<body>
+    <h2>Cari Mentor</h2>
+    
+    <form method="GET" action="{% url 'cari_mentor' %}">
+        <label for="nama_mentor">Nama Mentor:</label>
+        <input type="text" name="nama_mentor" id="nama_mentor" value="{{ nama_mentor|default_if_none:'' }}">
+        <button type="submit">Cari</button>
+    </form>
+    
+    <h3>Filter Kategori</h3>
+    <div>
+        <a href="{% url 'cari_mentor' %}" class="{% if not selected_kategori %}active{% endif %}">Semua Kategori</a>
+        {% for kategori in list_kategori %}
+            <a href="{% url 'cari_mentor' %}?kategori={{ kategori.id }}{% if nama_mentor %}&nama_mentor={{ nama_mentor }}{% endif %}" class="{% if selected_kategori|stringformat:"s" == kategori.id|stringformat:"s" %}active{% endif %}">
+                {{ kategori.nama_kategori }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <h3>Daftar Mentor</h3>
+    <ul>
+        {% for mentor in mentors %}
+            <li>
+                <img src="{{ mentor.foto_pengguna }}" alt="{{ mentor.pengguna.nama }}" width="100">
+                <h4>{{ mentor.pengguna.nama }}</h4>
+                <p>Kategori Kelas:</p>
+                <ul>
+                    {% for kategori in mentor.kategori_kelas_list %}
+                        <li>{{ kategori.nama_kategori }}</li>
+                    {% endfor %}
+                </ul>
+                <p>Total Kelas: {{ mentor.total_kelas }}</p>
+                <a href="{% url 'detail_mentor' mentor.id %}">Lihat Detail</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
