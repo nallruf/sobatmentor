@@ -9,7 +9,7 @@
 <body>
     <h1>Detail Mentor</h1>
     <div>
-        <img src="{{ mentor.pengguna.foto }}" alt="{{ mentor.pengguna.nama }}">
+        <img src="{{ mentor.pengguna.foto.url }}" alt="{{ mentor.pengguna.nama }}">
         <h2>{{ mentor.pengguna.nama }}</h2>
         <p>{{ mentor.bio }}</p>
         <p>LinkedIn: <a href="{{ kontak.linkedin }}">{{ kontak.linkedin }}</a></p>
@@ -64,7 +64,7 @@
         {% for skill in skills_list %}
         <li>
             <p>Nama: {{ skill.skill.nama }}</p>
-            <img src="{{ skill.skill.foto }}" alt="{{ skill.skill.nama }}">
+            <img src="{{ skill.skill.foto.url }}" alt="{{ skill.skill.nama }}">
         </li>
         {% endfor %}
     </ul>
@@ -74,7 +74,7 @@
         {% for project in projects_list %}
         <li>
             <p>Nama: {{ project.nama }}</p>
-            <img src="{{ project.foto }}" alt="{{ project.nama }}">
+            <img src="{{ project.foto.url }}" alt="{{ project.nama }}">
         </li>
         {% endfor %}
     </ul>

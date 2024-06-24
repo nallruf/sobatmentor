@@ -28,7 +28,7 @@
     <ul>
         {% for mentor in mentors %}
             <li>
-                <img src="{{ mentor.foto_pengguna }}" alt="{{ mentor.pengguna.nama }}" width="100">
+                <img src="{{ mentor.pengguna.foto.url }}" alt="{{ mentor.pengguna.nama }}" width="100">
                 <h4>{{ mentor.pengguna.nama }}</h4>
                 <p>Kategori Kelas:</p>
                 <ul>
