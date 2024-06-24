@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page | Sobat Mentor</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      .scroll-to-top {
+        position: fixed;
+        bottom: 80px;
+        right: 60px;
+        border-radius: 50%; /* Membuat tombol berbentuk lingkaran */
+        width: 50px; /* Menyesuaikan lebar tombol */
+        height: 50px; /* Menyesuaikan tinggi tombol */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px; /* Menyesuaikan ukuran font */
+        opacity: 0.8; /* Memberikan transparansi */
+        transition: opacity 0.3s ease-in-out;
+        z-index: 1;
+      }
+
+      .scroll-to-top:hover {
+        opacity: 1; /* Memperjelas tombol saat dihover */
+      }
+    </style>
+  </head>
+  <body>
+    <button class="bg--brand-solid border--brand-solid scroll-to-top" style="display: none">
+      <svg class="" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5" />
+      </svg>
+    </button>
+    <!-- <div class="container"> -->
+    <div class="navbar-top">
+      <div class="logo">
+        <img src="{% static 'assets/images/logo.png' %}" alt="Logo Carimentor" />
+        <p class="text-md-semibold text--brand-secondary">Sobat Mentor</p>
+      </div>
+      <div class="nav-fitur">
+        <a href="" class="navbar-link text-md-reguler text--primary active">Home</a>
+        <a href="carimentor" class="navbar-link text-md-reguler text--primary">Cari Mentor</a>
+        <a href="carikelas" class="navbar-link text-md-reguler text--primary">Cari Kelas</a>
+        <a href="jadimentor" class="navbar-link text-md-reguler text--primary">Jadi Mentor</a>
+      </div>
+      <!-- <div class="nav-auth">
+        <a href="signIn" class="button-link text-md-medium text--white bg--brand-solid">Sign In</a>
+        <a href="signUp" class="button-link text-md-medium text--brand-primary">Sign Up</a>
+      </div> -->
+      <div class="nav-profil">
+        <a href="profil" class="button-link text-md-medium text--primary"><img src="{% static 'assets/icons/user.svg' %}" class="me-2" />Hai, User</a>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <div class="main-layout">
+      <section>
+        <div class="header text-center">
+          <h1 class="display-2xl-semibold mb-2">Raih <span class="text--brand-secondary">Potensi</span> <br />Wujudkan <span class="text--brand-secondary">Mimpi</span></h1>
+          <p class="text-xl-reguler text--secondary">Temukan mentor yang tepat untuk membantumu<br />meraih potensi dan wujudkan impianmu!</p>
+          <div class="mt-4">
+            <a href="" class="button-link text-md-medium text--white bg--brand-solid me-2">Cari Mentor Sekarang</a>
+            <a href="" class="button-link text-md-medium text--brand-secondary" id="notfound"
+              >Pelajari lebih lanjut
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#2E90FA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="d-flex justify-content-center mt-5">
+          <img class="rounded-4 img-fluid" src="{% static 'assets/images/home-image.svg' %}" alt="" />
+        </div>
+      </section>
+
+      <section>
+        <div class="d-flex gap-5 mt-5 pt-5">
+          <img src="{% static 'assets/images/home-image2.svg' %}" alt="" class="rounded-4" />
+          <div>
+            <div class="mb-4">
+              <h2 class="display-md-semibold mb-3">Mengenal Sobat Mentor</h2>
+              <p class="text-md-reguler">
+                Platform inovatif yang menghubungkanmu dengan mentor ahli di berbagai bidang. Dapatkan bimbingan personal untuk mencapai tujuanmu. Jadi bagian dari komunitas kami dan mulai perjalanan
+                menuju kesuksesanmu sekarang!
+              </p>
+            </div>
+            <a href="" class="button-link text-md-medium text--white bg--brand-solid">Pelajari lebih lanjut</a>
+            <div class="mt-5">
+              <h6 class="mb-4 text-xl-medium">Apa yang Kami Tawarkan?</h6>
+              <div class="d-flex flex-lg-row flex-sm-column gap-4 row-gap-sm-3">
+                <div
+                  class="d-flex flex-sm-row flex-lg-column gap-2 column-gap-sm-3 justify-content-center align-items-center text-center border border--warning rounded-4 bg-white shadow-sm p-2"
+                  style="width: 75%; height: 10rem"
+                >
+                  <h2 class="display-md-bold text--brand-secondary" id="mentor"></h2>
+                  <p class="text-md-reguler">Pilihan Mentor Unggulan</p>
+                </div>
+                <div class="d-flex flex-column gap-2 justify-content-center text-center border border--tertiary rounded-4 bg-white shadow-sm p-2" style="width: 75%; height: 10rem">
+                  <h2 class="display-md-bold text--brand-secondary" id="class"></h2>
+                  <p class="text-md-reguler">Pilihan Kelas Favorite</p>
+                </div>
+                <div class="d-flex flex-column gap-2 justify-content-center text-center border border--tertiary rounded-4 bg-white shadow-sm p-2" style="width: 75%; height: 10rem">
+                  <h2 class="display-md-bold text--brand-secondary" id="trusted"></h2>
+                  <p class="text-md-reguler">Kepercayaan & Keamanan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="d-flex align-items-end justify-content-center gap-4 mt-5 pt-5">
+          <div>
+            <div class="mb-4">
+              <h2 class="mb-3">Mentor Populer</h2>
+              <p class="w-75">Temukan mentor yang bisa membantumu belajar sesuai kompetensi dan kelas yang kamu cari.</p>
+            </div>
+            <a href="" class="button-link text-md-medium text--brand-primary border border--brand-solid"
+              >Temukan Mentormu
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#2E90FA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div>
+            <div class="d-flex align-items-end gap-3">
+              <div class="position-relative" style="width: 21.25rem; height: 26.7rem">
+                <div>
+                  <img src="{% static 'assets/images/mentor1.svg' %}" alt="" class="rounded-4 object-fit-cover" style="width: 21.25rem; height: 26.74825rem" />
+                </div>
+                <div class="position-absolute bottom-0 mb-3 w-100">
+                  <div class="d-flex justify-content-between align-baseline">
+                    <div class="justify-content-start">
+                      <h5 class="display-xs-medium p-2 bg--brand-solid text-white">Lilia Devina</h5>
+                      <h6 class="text-md-reguler p-2 bg-white text--brand-secondary">Kelas Menulis</h6>
+                    </div>
+                    <div class="d-flex flex-column justify-content-end text-end me-3">
+                      <h5 class="display-sm-semibold text-white">12</h5>
+                      <p class="text-md-semibold text-white">Class</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="position-relative">
+                <div>
+                  <img src="{% static 'assets/images/mentor1.svg' %}" alt="" class="rounded-4 object-fit-cover" style="height: 22.5rem; width: 7rem" />
+                </div>
+                <!-- <h6 class="position-absolute bottom-0 start-0 text-xs-semibold text-white" style="transform: rotate(-90deg)">Kelas Bahasa Asing</h6> -->
+              </div>
+              <div class="position-relative">
+                <div>
+                  <img src="{% static 'assets/images/mentor1.svg' %}" alt="" class="rounded-4 object-fit-cover" style="height: 22.5rem; width: 7rem" />
+                </div>
+                <!-- <h6 class="position-absolute bottom-0 start-0 text-xs-semibold text-white" style="transform: rotate(-90deg)">Kelas Bahasa Asing</h6> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="text-center mt-5 pt-5">
+          <h2 class="mb-4">Kelas Pilihan</h2>
+          <div class="pb-3 mb-4">
+            <div class="row gap-4 row-gap-sm-3 mb-3">
+              <!-- <div class="d-flex flex-column flex-md-row gap-4 row-gap-sm-3"> -->
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+            </div>
+            <div class="row gap-4 row-gap-sm-3">
+              <!-- <div class="d-flex flex-column flex-md-row gap-4 row-gap-sm-3"> -->
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+              <a href="" class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm">UI UX Design 🎨</a>
+            </div>
+          </div>
+          <a href="" class="button-link text-md-medium text--brand-primary border border--brand-solid"
+            >Selengkapnya
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="#2E90FA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <div class="mt-5 pt-5 d-flex justify-content-center">
+          <div class="position-relative" style="width: 77.5rem; height: 20rem">
+            <img src="{% static 'assets/images/home-image.svg' %}" alt="" class="object-fit-cover rounded-4" />
+            <div class="position-absolute bottom-0 rounded-4" style="width: 77.5rem; height: 20rem; background: #535353; mix-blend-mode: multiply"></div>
+            <div class="position-absolute start-50 top-50 translate-middle text-center">
+              <h2 class="display-md-semibold text-white mb-2">Jadi Mentor Sekarang Juga!</h2>
+              <p class="text-md-reguler text-white mb-4">Kamu, mahasiswa yang punya skill khusus dan ingin mengasah skill sekaligus dapat uang saku tambahan?</p>
+              <a href="" class="button-link text-md-medium text--brand-secondary bg--primary">Daftar Sekarang</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="mt-5 pt-5">
+          <h2 class="display-md-semibold text-center mb-4">Kata Mereka</h2>
+          <div class="d-flex gap-4 justify-content-center align-items-center">
+            <div class="d-flex gap-4 p-5 bg-white shadow-lg rounded-4">
+              <div>
+                <img src="{% static 'assets/images/mentor1.svg' %}" alt="" class="object-fit-cover" style="border-radius: 3.4965rem 0rem 0rem 0rem; width: 10.90906rem; height: 12.58744rem" />
+              </div>
+              <div>
+                <h6 class="text-lg-semibold">Femilia Nada</h6>
+                <p class="text-sm-medium mb-3">Siswi SMA | Mentee sejak 2018</p>
+                <div>
+                  <p class="text-sm-reguler" style="width: 29.25rem">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteu.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-column gap-3">
+              <div>
+                <img src="{% static 'assets/images/mentor1.svg' %}" alt="" class="object-fit-cover rounded-3" style="width: 14.125rem; height: 4.95681rem" />
+              </div>
+              <div>
+                <img src="{% static 'assets/images/mentor1.svg' %}" alt="" class="object-fit-cover rounded-3" style="width: 14.125rem; height: 4.95681rem" />
+              </div>
+              <div>
+                <img src="{% static 'assets/images/mentor1.svg' %}" alt="" class="object-fit-cover rounded-3" style="width: 14.125rem; height: 4.95681rem" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- <footer style="background-color: #1a4185; color: white; padding: 20px 0">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-xs-12 about-company">
+            <h2 class="text-md-semibold mb-3">Sobat Mentor</h2>
+            <p class="pr-5 text-white text-sm-reguler">Solusi Mentor Tepat Untuk Mimpi Yang Hebat</p>
+            <p>
+              <a href="#"><i class="fa fa-facebook-square mr-1"></i></a><a href="#"><i class="fa fa-linkedin-square"></i></a>
+            </p>
+          </div>
+          <div class="col-lg-3 col-xs-12 links">
+            <h4 class="mt-lg-0 mt-sm-3 text-md-medium mb-3">Service</h4>
+            <ul class="m-0 p-0">
+              <p class="text-sm-reguler mb-2">Home</p>
+              <p class="text-sm-reguler mb-2">Cari Mentor</p>
+              <p class="text-sm-reguler mb-2">Cari Kelas</p>
+              <p class="text-sm-reguler mb-2">Jadi Mentor</p>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-xs-12 location">
+            <h5 class="text-md-medium mb-3">Contact</h5>
+            <ul class="list-unstyled">
+              <li class="text-sm-reguler mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                  <path
+                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
+                  />
+                </svg>
+                Admin
+              </li>
+              <li class="text-sm-reguler mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                  <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                  />
+                </svg>
+                Sobatmentor
+              </li>
+
+              <li class="text-sm-reguler mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"
+                  />
+                </svg>
+                Pesansobatmentor@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="text-center my-3">
+          <p class=""><small class="text-white"> Copyright © Sobat Mentor 2024.</small></p>
+        </div>
+      </div>
+    </footer> -->
+
+    {% include 'footer.html' %}
+
+    <script>
+      document.getElementById("notfound").addEventListener("click", function () {
+        alert("Yah, fitur ini masih dalam proses pengembangan :(");
+      });
+    </script>
+
+    <!-- AMBIL DATA API -->
+    <script>
+      // URL API untuk mengambil data JSON
+      const apiUrl = "http://localhost:3000/api/v1/member/landing";
+
+      // Mengambil data dari API dan menampilkan dalam elemen HTML
+      fetch(apiUrl)
+        .then((response) => {
+          // Memeriksa apakah responsenya berhasil
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          // Mengonversi responsenya menjadi JSON
+          return response.json();
+        })
+        .then((data) => {
+          // ambil id elemen
+          const cardmentor = document.getElementById("mentor");
+          const cardclass = document.getElementById("class");
+          const cardtrusted = document.getElementById("trusted");
+
+          //ngisi text
+          cardmentor.textContent = data.mentor;
+          cardclass.textContent = data.favClass;
+          cardtrusted.textContent = data.trusted + "%";
+        })
+        .catch((error) => {
+          // Menangani kesalahan jika fetch gagal atau responsenya tidak valid
+          console.error("There was a problem with the fetch operation:", error);
+        });
+    </script>
+
+    <!-- FLOATING BUTTON -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Scroll to top button
+        const scrollToTopBtn = document.querySelector(".scroll-to-top");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 200) {
+            scrollToTopBtn.style.display = "block";
+          } else {
+            scrollToTopBtn.style.display = "none";
+          }
+        });
+
+        scrollToTopBtn.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

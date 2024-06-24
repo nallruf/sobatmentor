@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <title>Success Sign Up Page | Sobat Mentor</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom.css' %}" />
+    <style>
+      .imgMain {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      body {
+        background: rgb(250, 249, 249);
+        color: black;
+        button {
+          color: white;
+          background: rgba(82, 124, 150, 1);
+          color: white;
+        }
+      }
+    </style>
+  </head>
+  <body style="font-family: Poppins">
+    <div class="text-center mt-5">
+      <img src="{% static 'assets/images/illust-signup.svg' %}" class="imgMain" id="imgMain" alt="koneksi internet tidak stabil" style="width: 20.25rem" />
+      <div class="mb-4">
+        <h1 class="display-sm-semibold mb-2">Horeee! <br>Pembayaran Telah <span class="text--success-primary">Berhasil</span> :)</h1>
+        <p class="display-xs-reguler">Pembayaran Anda telah kami terima <br />Jika ada pertanyaan, kritik, atau saran silakan hubungi Kami.</p>
+      </div>
+      <a href="{% url 'index' %}" class="button-link text-lg-medium text-white bg--brand-solid" id="btn-signin">Kembali ke Home</a>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- <script>
+      document.getElementById("btn-signin").addEventListener("click", function () {
+        alert("Kamu sudah berhasil Sign Up. Silakan Lakukan Sign In!");
+        window.location.replace("signIn.html");
+      });
+    </script> -->
+  </body>
+</html>

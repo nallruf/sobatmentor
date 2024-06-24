@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cari Kelas | Sobat Mentor</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom.css' %}" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+  </head>
+  <body style="background-color: #fff">
+    <div class="navbar-top">
+      <div class="logo">
+        <img src="" alt="" />
+        <p class="text-md-semibold text--brand-secondary">Sobat Mentor</p>
+      </div>
+      <div class="nav-fitur">
+        <a href="/" class="navbar-link text-md-reguler text--primary">Home</a>
+        <a href="carimentor" class="navbar-link text-md-reguler text--primary">Cari Mentor</a>
+        <a href="" class="navbar-link text-md-reguler text--primary active">Cari Kelas</a>
+        <a href="jadimentor" class="navbar-link text-md-reguler text--primary">Jadi Mentor</a>
+      </div>
+      <div class="nav-auth">
+        <a href="signIn" class="button-link text-md-medium text--white bg--brand-solid">Sign In</a>
+        <a href="signUp" class="button-link text-md-medium text--brand-primary">Sign Up</a>
+      </div>
+    </div>
+    <div class="content">
+      <section class="main-title">
+        <div class="main-title">
+          <h1 class="title display-lg-semibold text-primarycolor">TEMUKAN KELASMU</h1>
+          <p class="text-xl-reguler text-primarycolor">Temukan mentor pilihanmu dan wujudkan impianmu!</p>
+        </div>
+      </section>
+      <section class="filter">
+        <div class="filter">
+          <input type="text" class="text-field-search" placeholder="Search" id="search" />
+          <div class="filter-category">
+            <a href="" class="button-link"><img src="../static/assets/icons/chevron-left.svg" alt="" /></a>
+            <a href="" class="button-link text-md-reguler border border--primary">SD</a>
+            <a href="" class="button-link text-md-reguler border border--primary">SMP</a>
+            <a href="" class="button-link text-md-reguler border border--primary bg--brand-solid text-white">SMA</a>
+            <a href="" class="button-link text-md-reguler border border--primary">Writing</a>
+            <a href="" class="button-link text-md-reguler border border--primary">English</a>
+            <a href="" class="button-link text-md-reguler border border--primary">Web Development</a>
+            <a href="" class="button-link text-md-reguler border border--primary">Design</a>
+            <a href="" class="button-link text-md-reguler border border--primary">Speaking</a>
+            <a href="" class="button-link"><img src="../static/assets/icons/chevron-right.svg" alt="" /></a>
+          </div>
+        </div>
+      </section>
+      <div class="text-center notFound d-none">
+        <img src="../static/assets/images/illust-notfound.svg" class="mb-4" />
+        <p class="text-xl-reguler mb-4" style="text-align: center">Yahh, Maaf Kelas Yang Kamu Cari Belum Tersedia :(</p>
+        <button id="showclass" class="button-link bg--brand-solid border--brand-solid text-white text-sm-medium">Lihat Rekomendasi Kelas</button>
+      </div>
+      <section class="class-menu">
+        <div class="class-menu">
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+          <div class="class-card grid-item">
+            <div class="img-class-card">
+              <img src="../static/assets/images/mentor1.svg" alt="" class="object-fit-none" style="width: 15rem; height: 10rem" />
+            </div>
+            <div class="desc">
+              <div class="cat">
+                <h6 class="text-sm-reguler">Matematika Peminatan</h6>
+                <h6 class="text-sm-reguler">Kelas X SMA</h6>
+              </div>
+              <div class="mentor">
+                <h6 class="display-sm-semibold">3</h6>
+                <h6 class="text-sm-reguler">Mentor</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+      var input = document.getElementById("search");
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          $(".notFound").removeClass("d-none");
+          $(".notFound").show("fast");
+          $(".class-menu").addClass("d-none");
+        }
+      });
+
+      $(".notFound").on("click", function () {
+        $(".notFound").slideToggle("fast");
+        $(".class-menu").removeClass("d-none");
+      });
+    </script>
+  </body>
+</html>

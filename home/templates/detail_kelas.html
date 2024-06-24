@@ -1,0 +1,155 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container">
+  <div class="row gap-lg-5">
+    <div class="col-lg-4 d-flex flex-column align-items-center gap-2">
+      <img
+        class="person-working"
+        src="{% static 'assets/images/photo8.svg' %}"
+      />
+      <h2 class="fw-semibold">Writing Class</h2>
+      <p>by Liliana Devina</p>
+    </div>
+
+    <div class="col-lg-5 mx-lg-3 my-auto">
+      <div class="d-flex flex-column gap-3">
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate,
+          velit. Eveniet quasi recusandae minus soluta laboriosam aut et enim
+          modi nulla, assumenda ipsum repudiandae eius voluptate est iusto
+          suscipit neque.
+        </div>
+        <button type="submit" class="btn btn-primary w-25 py-2">
+          Unduh Silabus
+        </button>
+      </div>
+      <div class="d-flex flex-column gap-2 mt-4">
+        <h3>Available Class</h3>
+        <p>Pilih kelas untuk melanjutkan</p>
+        <div class="d-flex gap-4">
+          <div
+            class="card d-flex flex-column justify-content-center align-items-center text-center gap-3"
+            style="
+              border-radius: 20px;
+              padding: 24px;
+              width: 188px;
+              box-shadow: 0px 4px 4px rgba(20, 112, 239, 0.4);
+            "
+          >
+            <h5 class="card-title fw-semibold" style="font-size: 16px">
+              3x Pertemuan / Minggu
+            </h5>
+            <p
+              class="w-100"
+              style="background-color: #dcfae6; border-radius: 8px"
+            >
+              Luring
+            </p>
+            <div style="font-size: 14px">
+              <div class="d-flex justify-content-between gap-2">
+                <p>Senin</p>
+                <p>19.00 WIB</p>
+              </div>
+              <div class="d-flex justify-content-between gap-2">
+                <p>Selasa</p>
+                <p>19.00 WIB</p>
+              </div>
+              <div class="d-flex justify-content-between gap-2">
+                <p>Rabu</p>
+                <p>19.00 WIB</p>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="d-flex text-decoration-none align-items-center gap-2 fw-semibold"
+            >
+              <span>Pilih Kelas</span>
+              <img
+                src="{% static 'assets/icons/chevron-right.svg' %}"
+                alt="Chevron Right Icon"
+              />
+            </a>
+          </div>
+
+          <div
+            class="card d-flex flex-column justify-content-center align-items-center text-center gap-3"
+            style="
+              border-radius: 20px;
+              padding: 24px;
+              width: 188px;
+              height: fit-content;
+              box-shadow: 0px 4px 4px rgba(20, 112, 239, 0.4);
+            "
+          >
+            <h5 class="card-title fw-semibold" style="font-size: 16px">
+              2x Pertemuan / Minggu
+            </h5>
+            <p
+              class="w-100"
+              style="background-color: #dcfae6; border-radius: 8px"
+            >
+              Luring
+            </p>
+            <div style="font-size: 14px">
+              <div class="d-flex justify-content-between gap-2">
+                <p>Senin</p>
+                <p>19.00 WIB</p>
+              </div>
+              <div class="d-flex justify-content-between gap-2">
+                <p>Kamis</p>
+                <p>19.00 WIB</p>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="d-flex text-decoration-none align-items-center gap-2 fw-semibold"
+            >
+              <span>Pilih Kelas</span>
+              <img
+                src="{% static 'assets/icons/chevron-right.svg' %}"
+                alt="Chevron Right Icon"
+              />
+            </a>
+          </div>
+
+          <div
+            class="card d-flex flex-column justify-content-center align-items-center text-center gap-3"
+            style="
+              border-radius: 20px;
+              padding: 24px;
+              width: 188px;
+              height: fit-content;
+              box-shadow: 0px 4px 4px rgba(20, 112, 239, 0.4);
+            "
+          >
+            <h5 class="card-title fw-semibold" style="font-size: 16px">
+              1x Pertemuan / Minggu
+            </h5>
+            <p
+              class="w-100"
+              style="background-color: #dcfae6; border-radius: 8px"
+            >
+              Luring
+            </p>
+            <div style="font-size: 14px">
+              <div class="d-flex justify-content-between gap-2">
+                <p>Senin</p>
+                <p>19.00 WIB</p>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="d-flex text-decoration-none align-items-center gap-2 fw-semibold"
+            >
+              <span>Pilih Kelas</span>
+              <img
+                src="{% static 'assets/icons/chevron-right.svg' %}"
+                alt="Chevron Right Icon"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

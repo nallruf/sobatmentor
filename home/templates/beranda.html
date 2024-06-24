@@ -1,0 +1,482 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<style>
+  .scroll-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 60px;
+    border-radius: 50%; /* Membuat tombol berbentuk lingkaran */
+    width: 50px; /* Menyesuaikan lebar tombol */
+    height: 50px; /* Menyesuaikan tinggi tombol */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Menyesuaikan ukuran font */
+    opacity: 0.8; /* Memberikan transparansi */
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .scroll-to-top:hover {
+    opacity: 1; /* Memperjelas tombol saat dihover */
+  }
+</style>
+
+<div class="main-layout">
+  <section>
+    <div class="header text-center">
+      <h1 class="display-2xl-semibold mb-2">
+        Raih <span class="text--brand-secondary">Potensi</span> <br />Wujudkan
+        <span class="text--brand-secondary">Mimpi</span>
+      </h1>
+      <p class="text-xl-reguler text--secondary">
+        Temukan mentor yang tepat untuk membantumu<br />meraih potensi dan
+        wujudkan impianmu!
+      </p>
+      <div class="mt-4">
+        <a
+          href=""
+          class="button-link text-md-medium text--white bg--brand-solid me-2"
+          >Cari Mentor Sekarang</a
+        >
+        <a
+          href=""
+          class="button-link text-md-medium text--brand-secondary"
+          id="notfound"
+          >Pelajari lebih lanjut
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 9L12 15L18 9"
+              stroke="#2E90FA"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="d-flex justify-content-center mt-5">
+      <img
+        class="rounded-4 img-fluid"
+        src="{% static 'assets/images/home-image.svg' %}"
+        alt=""
+      />
+    </div>
+  </section>
+
+  <section>
+    <div class="d-flex gap-5 mt-5 pt-5">
+      <img
+        src="{% static 'assets/images/home-image2.svg' %}"
+        alt=""
+        class="rounded-4"
+      />
+      <div>
+        <div class="mb-4">
+          <h2 class="display-md-semibold mb-3">Mengenal Sobat Mentor</h2>
+          <p class="text-md-reguler">
+            Platform inovatif yang menghubungkanmu dengan mentor ahli di
+            berbagai bidang. Dapatkan bimbingan personal untuk mencapai
+            tujuanmu. Jadi bagian dari komunitas kami dan mulai perjalanan
+            menuju kesuksesanmu sekarang!
+          </p>
+        </div>
+        <a
+          href=""
+          class="button-link text-md-medium text--white bg--brand-solid"
+          >Pelajari lebih lanjut</a
+        >
+        <div class="mt-5">
+          <h6 class="mb-4 text-xl-medium">Apa yang Kami Tawarkan?</h6>
+          <div class="d-flex flex-lg-row flex-sm-column gap-4 row-gap-sm-3">
+            <div
+              class="d-flex flex-sm-row flex-lg-column gap-2 column-gap-sm-3 justify-content-center align-items-center text-center border border--warning rounded-4 bg-white shadow-sm p-2"
+              style="width: 75%; height: 10rem"
+            >
+              <h2
+                class="display-md-bold text--brand-secondary"
+                id="mentor"
+              ></h2>
+              <p class="text-md-reguler">Pilihan Mentor Unggulan</p>
+            </div>
+            <div
+              class="d-flex flex-column gap-2 justify-content-center text-center border border--tertiary rounded-4 bg-white shadow-sm p-2"
+              style="width: 75%; height: 10rem"
+            >
+              <h2 class="display-md-bold text--brand-secondary" id="class"></h2>
+              <p class="text-md-reguler">Pilihan Kelas Favorite</p>
+            </div>
+            <div
+              class="d-flex flex-column gap-2 justify-content-center text-center border border--tertiary rounded-4 bg-white shadow-sm p-2"
+              style="width: 75%; height: 10rem"
+            >
+              <h2
+                class="display-md-bold text--brand-secondary"
+                id="trusted"
+              ></h2>
+              <p class="text-md-reguler">Kepercayaan & Keamanan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="d-flex align-items-end justify-content-center gap-4 mt-5 pt-5">
+      <div>
+        <div class="mb-4">
+          <h2 class="mb-3">Mentor Populer</h2>
+          <p class="w-75">
+            Temukan mentor yang bisa membantumu belajar sesuai kompetensi dan
+            kelas yang kamu cari.
+          </p>
+        </div>
+        <a
+          href="#"
+          class="button-link text-md-medium text--brand-primary border border--brand-solid d-inline-flex align-items-center"
+        >
+          Temukan Mentormu
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style="margin-left: 0.5rem"
+          >
+            <path
+              d="M9 6L15 12L9 18"
+              stroke="#2E90FA"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+      <div>
+        <div class="d-flex align-items-end gap-3">
+          <div
+            class="position-relative"
+            style="width: 21.25rem; height: 26.7rem"
+          >
+            <div>
+              <img
+                src="{% static 'assets/images/mentor1.svg' %}"
+                alt=""
+                class="rounded-4 object-fit-cover"
+                style="width: 21.25rem; height: 26.74825rem"
+              />
+            </div>
+            <div class="position-absolute bottom-0 mb-3 w-100">
+              <div class="d-flex justify-content-between align-baseline">
+                <div class="justify-content-start">
+                  <h5 class="display-xs-medium p-2 bg--brand-solid text-white">
+                    Lilia Devina
+                  </h5>
+                  <h6
+                    class="text-md-reguler p-2 bg-white text--brand-secondary"
+                  >
+                    Kelas Menulis
+                  </h6>
+                </div>
+                <div
+                  class="d-flex flex-column justify-content-end text-end me-3"
+                >
+                  <h5 class="display-sm-semibold text-white">12</h5>
+                  <p class="text-md-semibold text-white">Class</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div>
+              <img
+                src="{% static 'assets/images/mentor1.svg' %}"
+                alt=""
+                class="rounded-4 object-fit-cover"
+                style="height: 22.5rem; width: 7rem"
+              />
+            </div>
+            <!-- <h6 class="position-absolute bottom-0 start-0 text-xs-semibold text-white" style="transform: rotate(-90deg)">Kelas Bahasa Asing</h6> -->
+          </div>
+          <div class="position-relative">
+            <div>
+              <img
+                src="{% static 'assets/images/mentor1.svg' %}"
+                alt=""
+                class="rounded-4 object-fit-cover"
+                style="height: 22.5rem; width: 7rem"
+              />
+            </div>
+            <!-- <h6 class="position-absolute bottom-0 start-0 text-xs-semibold text-white" style="transform: rotate(-90deg)">Kelas Bahasa Asing</h6> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="text-center mt-5 pt-5">
+      <h2 class="mb-4">Kelas Pilihan</h2>
+      <div class="pb-3 mb-4">
+        <div class="row gap-4 row-gap-sm-3 mb-3">
+          <!-- <div class="d-flex flex-column flex-md-row gap-4 row-gap-sm-3"> -->
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+        </div>
+        <div class="row gap-4 row-gap-sm-3">
+          <!-- <div class="d-flex flex-column flex-md-row gap-4 row-gap-sm-3"> -->
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+          <a
+            href=""
+            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+            >UI UX Design 🎨</a
+          >
+        </div>
+      </div>
+      <a
+        href=""
+        class="button-link text-md-medium text--brand-primary border border--brand-solid d-inline-flex align-items-center justify-content-center"
+        >Selengkapnya
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="margin-left: 0.5rem"
+        >
+          <path
+            d="M9 6L15 12L9 18"
+            stroke="#2E90FA"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="mt-5 pt-5 d-flex justify-content-center">
+      <div class="position-relative" style="width: 77.5rem; height: 20rem">
+        <img
+          src="{% static 'assets/images/home-image.svg' %}"
+          alt=""
+          class="object-fit-cover rounded-4"
+        />
+        <div
+          class="position-absolute bottom-0 rounded-4"
+          style="
+            width: 77.5rem;
+            height: 20rem;
+            background: #535353;
+            mix-blend-mode: multiply;
+          "
+        ></div>
+        <div
+          class="position-absolute start-50 top-50 translate-middle text-center"
+        >
+          <h2 class="display-md-semibold text-white mb-2">
+            Jadi Mentor Sekarang Juga!
+          </h2>
+          <p class="text-md-reguler text-white mb-4">
+            Kamu, mahasiswa yang punya skill khusus dan ingin mengasah skill
+            sekaligus dapat uang saku tambahan?
+          </p>
+          <a
+            href=""
+            class="button-link text-md-medium text--brand-secondary bg--primary"
+            >Daftar Sekarang</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mt-5 pt-5">
+      <h2 class="display-md-semibold text-center mb-4">Kata Mereka</h2>
+      <div class="d-flex gap-4 justify-content-center align-items-center">
+        <div class="d-flex gap-4 p-5 bg-white shadow-lg rounded-4">
+          <div>
+            <img
+              src="{% static 'assets/images/mentor1.svg' %}"
+              alt=""
+              class="object-fit-cover"
+              style="
+                border-radius: 3.4965rem 0rem 0rem 0rem;
+                width: 10.90906rem;
+                height: 12.58744rem;
+              "
+            />
+          </div>
+          <div>
+            <h6 class="text-lg-semibold">Femilia Nada</h6>
+            <p class="text-sm-medium mb-3">Siswi SMA | Mentee sejak 2018</p>
+            <div>
+              <p class="text-sm-reguler" style="width: 29.25rem">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteu.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column gap-3">
+          <div>
+            <img
+              src="{% static 'assets/images/mentor1.svg' %}"
+              alt=""
+              class="object-fit-cover rounded-3"
+              style="width: 14.125rem; height: 4.95681rem"
+            />
+          </div>
+          <div>
+            <img
+              src="{% static 'assets/images/mentor1.svg' %}"
+              alt=""
+              class="object-fit-cover rounded-3"
+              style="width: 14.125rem; height: 4.95681rem"
+            />
+          </div>
+          <div>
+            <img
+              src="{% static 'assets/images/mentor1.svg' %}"
+              alt=""
+              class="object-fit-cover rounded-3"
+              style="width: 14.125rem; height: 4.95681rem"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  document.getElementById("notfound").addEventListener("click", function () {
+    alert("Yah, fitur ini masih dalam proses pengembangan :(");
+  });
+</script>
+
+<!-- AMBIL DATA API -->
+<script>
+  // URL API untuk mengambil data JSON
+  const apiUrl = "http://localhost:3000/api/v1/member/landing";
+
+  // Mengambil data dari API dan menampilkan dalam elemen HTML
+  fetch(apiUrl)
+    .then((response) => {
+      // Memeriksa apakah responsenya berhasil
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      // Mengonversi responsenya menjadi JSON
+      return response.json();
+    })
+    .then((data) => {
+      // ambil id elemen
+      const cardmentor = document.getElementById("mentor");
+      const cardclass = document.getElementById("class");
+      const cardtrusted = document.getElementById("trusted");
+
+      //ngisi text
+      cardmentor.textContent = data.mentor;
+      cardclass.textContent = data.favClass;
+      cardtrusted.textContent = data.trusted + "%";
+    })
+    .catch((error) => {
+      // Menangani kesalahan jika fetch gagal atau responsenya tidak valid
+      console.error("There was a problem with the fetch operation:", error);
+    });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Scroll to top button
+    const scrollToTopBtn = document.querySelector(".scroll-to-top");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 200) {
+        scrollToTopBtn.style.display = "block";
+      } else {
+        scrollToTopBtn.style.display = "none";
+      }
+    });
+
+    scrollToTopBtn.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  });
+</script>
+{% endblock %}

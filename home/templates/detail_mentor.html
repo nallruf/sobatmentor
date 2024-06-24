@@ -1,0 +1,626 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="d-flex flex-column gap-2 col-lg-5 mx-5 px-5">
+      <h6>Halo, Saya</h6>
+      <h1 class="fw-bold">Lilia Devina</h1>
+      <p>
+        Fullstack Web Developer pada perusahaan edukasi teknologi sekaligus
+        mentor pada web developer, ui ux design, dan content creator course.
+      </p>
+      <div class="d-flex gap-3">
+        <button
+          class="btn btn-outline-primary px-4 fw-semibold"
+          style="
+            width: fit-content;
+            border-radius: 14px;
+            color: #2e90fa;
+            background-color: transparent;
+          "
+          onclick="window.location.href='https://www.instagram.com'"
+        >
+          Instagram
+        </button>
+        <button
+          class="btn btn-outline-primary px-4 fw-semibold"
+          style="
+            width: fit-content;
+            border-radius: 14px;
+            color: #2e90fa;
+            background-color: transparent;
+          "
+          onclick="window.location.href='https://www.linkedin.com'"
+        >
+          LinkedIn
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-5 position-relative" style="margin-bottom: 100px">
+      <div class="position-relative" style="height: 459px">
+        <img
+          src="{% static 'assets/images/mentor1.svg' %}"
+          alt=""
+          class="rounded-5 object-fit-cover w-100"
+          style="height: 459px"
+        />
+        <img
+          src="{% static 'assets/images/mentor1.svg' %}"
+          alt=""
+          class="rounded-5 object-fit-cover position-absolute top-50 translate-middle-x end-50"
+          style="height: 250.87px; width: 310px"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="d-lg-flex gap-5">
+    <div
+      class="d-flex flex-column gap-2 my-auto align-items-center my-lg-auto mb-4"
+    >
+      <h2 class="d-flex align-items-center gap-2">
+        <div>Kelas Saya</div>
+        <i class="bx bx-book-open" style="color: #1470ef"></i>
+      </h2>
+      <p>Tersedia 3 pilihan kelas yang bisa kamu ikuti</p>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <div
+        class="card p-4 d-flex flex-column gap-4"
+        style="
+          border-radius: 20px;
+          width: 300px;
+          box-shadow: 0px 4px 4px rgba(20, 112, 239, 0.4);
+        "
+      >
+        <div
+          style="background-color: #e0e2e7; width: 56px; height: 56px"
+          class="rounded-2 d-flex align-items-center justify-content-center"
+        >
+          <img src="{% static 'assets/icons/folder.svg' %}" alt="Class Icon" />
+        </div>
+        <div>
+          <p class="card-title fw-semibold" style="font-size: 20px">
+            Web Development
+          </p>
+          <p class="card-text">
+            Pelajari cara menjadi web developer dalam waktu singkat.
+          </p>
+          <div class="d-flex gap-2 mt-2">
+            <p
+              class="px-4"
+              style="
+                background-color: #dcfae6;
+                border-radius: 14px;
+                width: fit-content;
+              "
+            >
+              Offline
+            </p>
+            <p
+              class="px-4"
+              style="
+                background-color: #dcfae6;
+                border-radius: 14px;
+                width: fit-content;
+              "
+            >
+              Online
+            </p>
+          </div>
+          <div class="mt-3 d-flex flex-column gap-3">
+            <p class="card-text">Total Jadwal Tersedia <span>: 24</span></p>
+            <a
+              href="#"
+              class="d-flex text-decoration-none align-items-center gap-2 fw-semibold"
+              style="font-size: large"
+            >
+              <span>Pilih Kelas</span>
+              <img
+                src="{% static 'assets/icons/chevron-right.svg' %}"
+                alt="Chevron Right Icon"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card p-4 d-flex flex-column gap-4"
+        style="
+          border-radius: 20px;
+          width: 300px;
+          box-shadow: 0px 4px 4px rgba(20, 112, 239, 0.4);
+        "
+      >
+        <div
+          style="background-color: #e0e2e7; width: 56px; height: 56px"
+          class="rounded-2 d-flex align-items-center justify-content-center"
+        >
+          <img src="{% static 'assets/icons/ui.svg' %}" alt="Class Icon" />
+        </div>
+        <div>
+          <p class="card-title fw-semibold" style="font-size: 20px">
+            UI UX Design
+          </p>
+          <p class="card-text">
+            Mulai karirmu sebagai UI UX Designer professional.
+          </p>
+          <div class="d-flex gap-2 mt-2">
+            <p
+              class="px-4"
+              style="
+                background-color: #dcfae6;
+                border-radius: 14px;
+                width: fit-content;
+              "
+            >
+              Offline
+            </p>
+            <p
+              class="px-4"
+              style="
+                background-color: #dcfae6;
+                border-radius: 14px;
+                width: fit-content;
+              "
+            >
+              Online
+            </p>
+          </div>
+          <div class="mt-3 d-flex flex-column gap-3">
+            <p class="card-text">Total Jadwal Tersedia <span>: 24</span></p>
+            <a
+              href="#"
+              class="d-flex text-decoration-none align-items-center gap-2 fw-semibold"
+              style="font-size: large"
+            >
+              <span>Pilih Kelas</span>
+              <img
+                src="{% static 'assets/icons/chevron-right.svg' %}"
+                alt="Chevron Right Icon"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card p-4 d-flex flex-column gap-4"
+        style="
+          border-radius: 20px;
+          width: 300px;
+          box-shadow: 0px 4px 4px rgba(20, 112, 239, 0.4);
+        "
+      >
+        <div
+          style="background-color: #e0e2e7; width: 56px; height: 56px"
+          class="rounded-2 d-flex align-items-center justify-content-center"
+        >
+          <img src="{% static 'assets/icons/cam.svg' %}" alt="Class Icon" />
+        </div>
+        <div>
+          <p class="card-title fw-semibold" style="font-size: 20px">
+            Content Creator
+          </p>
+          <p class="card-text">
+            Asah kreativitasmu melalui konten menarik dan edukatif.
+          </p>
+          <div class="d-flex gap-2 mt-2">
+            <p
+              class="px-4"
+              style="
+                background-color: #dcfae6;
+                border-radius: 14px;
+                width: fit-content;
+              "
+            >
+              Offline
+            </p>
+            <p
+              class="px-4"
+              style="
+                background-color: #dcfae6;
+                border-radius: 14px;
+                width: fit-content;
+              "
+            >
+              Online
+            </p>
+          </div>
+          <div class="mt-3 d-flex flex-column gap-3">
+            <p class="card-text">Total Jadwal Tersedia <span>: 24</span></p>
+            <a
+              href="#"
+              class="d-flex text-decoration-none align-items-center gap-2 fw-semibold"
+              style="font-size: large"
+            >
+              <span>Pilih Kelas</span>
+              <img
+                src="{% static 'assets/icons/chevron-right.svg' %}"
+                alt="Chevron Right Icon"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 pt-3 d-lg-flex justify-content-between">
+    <div class="d-flex flex-column gap-3">
+      <div class="d-flex flex-column gap-3">
+        <h3>Tentang Saya <i class="bx bx-user" style="color: #1470ef"></i></h3>
+        <div class="d-flex flex-wrap gap-3">
+          <img
+            src="{% static 'assets/images/mentor1.svg' %}"
+            alt=""
+            class="rounded-3 object-fit-cover"
+            style="height: 133px; width: 125.91px"
+          />
+          <div class="my-auto">
+            <div class="d-flex">
+              <p class="me-auto" style="min-width: 120px">Nama</p>
+              <span>: Lilia Devina</span>
+            </div>
+            <div class="d-flex">
+              <p class="me-auto" style="min-width: 120px">Jenis Kelamin</p>
+              <span>: Perempuan</span>
+            </div>
+            <div class="d-flex">
+              <p class="me-auto" style="min-width: 120px">Usia</p>
+              <span>: 27 Tahun</span>
+            </div>
+            <div class="d-flex">
+              <p class="me-auto" style="min-width: 120px">Domisili</p>
+              <span>: Sleman, DIY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column gap-3">
+        <h3>Pendidikan <i class="bx bxs-school" style="color: #1470ef"></i></h3>
+
+        <div class="d-flex gap-3">
+          <div class="my-auto fs-3" style="color: #667085">
+            <i class="bx bx-buildings"></i>
+          </div>
+          <div class="d-flex flex-column">
+            <p style="color: #667085">
+              <span class="fw-semibold text-black">Teknologi Informasi</span> -
+              Institut Teknologi Bandung
+            </p>
+            <p style="color: #667085">2015 - 2019</p>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3">
+          <div class="my-auto fs-3" style="color: #667085">
+            <i class="bx bx-buildings"></i>
+          </div>
+          <div class="d-flex flex-column">
+            <p style="color: #667085">
+              <span class="fw-semibold text-black"
+                >Rekayasa Perangkat Lunak</span
+              >
+              - SMK N 3 Yogyakarta
+            </p>
+            <p style="color: #667085">2012 - 2015</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="d-flex flex-column justify-content-center align-items-center mt-lg-0 mt-4"
+    >
+      <img
+        src="{% static 'assets/images/mentor1.svg' %}"
+        alt=""
+        class="rounded-5 object-fit-cover"
+        style="width: 640px; height: 282px"
+      />
+      <p>Video Profile Mentor</p>
+    </div>
+  </div>
+
+  <div class="mt-5 pt-3">
+    <div class="row">
+      <div class="col-lg-5 d-flex flex-column gap-3">
+        <h3>
+          Pengalaman Kerja <i class="bx bx-stats" style="color: #1470ef"></i>
+        </h3>
+        <div class="timeline">
+          <div class="timeline-item d-flex flex-column gap-2">
+            <h5 style="color: #3d4350">
+              <span class="fw-semibold text-black"
+                >Full-Stack Web Developer</span
+              >
+              - Vise Academy, Yogyakarta
+            </h5>
+            <div>
+              <p>Des 2020 - Sekarang</p>
+              <p>Mengembangkan 12 Website Platform Edukasi</p>
+              <p>Tailwind, Laravel</p>
+            </div>
+          </div>
+          <div class="timeline-item d-flex flex-column gap-2">
+            <h5 style="color: #3d4350">
+              <span class="fw-semibold text-black"
+                >Full-Stack Web Developer</span
+              >
+              - Vise Academy, Yogyakarta
+            </h5>
+            <div>
+              <p>Juni 2019 - Agustus 2020</p>
+              <p>Mengembangkan 12 Website Platform Edukasi</p>
+              <p>Tailwind, Laravel</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 d-flex flex-column gap-3">
+        <h3>
+          Pengalaman Mengajar <i class="bx bx-stats" style="color: #1470ef"></i>
+        </h3>
+        <div class="timeline">
+          <div class="timeline-item d-flex flex-column gap-2">
+            <h5 style="color: #3d4350">
+              <span class="fw-semibold text-black"> Mentor </span>
+              - UI UX Dicoding Course
+            </h5>
+            <div>
+              <p>Feb 2021 - April 2021</p>
+              <p>UX Research, Prinsip Design</p>
+            </div>
+          </div>
+          <div class="timeline-item d-flex flex-column gap-2">
+            <h5 style="color: #3d4350">
+              <span class="fw-semibold text-black"> Mentor</span>
+              - Web Development Dicoding Class
+            </h5>
+            <div>
+              <p>Juli 2020 - Des 2020</p>
+              <p>Tailwind, Laravel, Database</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 d-flex flex-column gap-3">
+        <h3>Skills <i class="bx bx-link" style="color: #1470ef"></i></h3>
+        <div class="d-flex flex-wrap gap-3" style="padding-top: 20px">
+          <div class="d-flex flex-column align-items-center text-center">
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                border: 2px solid #1470ef;
+                border-radius: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <img
+                src="{% static 'assets/icons/laravel.svg' %}"
+                style="width: 50px; height: 50px"
+              />
+            </div>
+            <div>Laravel</div>
+          </div>
+          <div class="d-flex flex-column align-items-center text-center">
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                border: 2px solid #1470ef;
+                border-radius: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <img
+                src="{% static 'assets/icons/sass.svg' %}"
+                style="width: 50px; height: 50px"
+              />
+            </div>
+            <div>Sass</div>
+          </div>
+          <div class="d-flex flex-column align-items-center text-center">
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                border: 2px solid #1470ef;
+                border-radius: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <img
+                src="{% static 'assets/icons/Bootstrap.svg' %}"
+                style="width: 50px; height: 50px"
+              />
+            </div>
+            <div>Bootstrap</div>
+          </div>
+          <div class="d-flex flex-column align-items-center text-center">
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                border: 2px solid #1470ef;
+                border-radius: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <img
+                src="{% static 'assets/icons/tailwind.svg' %}"
+                style="width: 50px; height: 50px"
+              />
+            </div>
+            <div>Tailwind</div>
+          </div>
+          <div class="d-flex flex-column align-items-center text-center">
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                border: 2px solid #1470ef;
+                border-radius: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <img
+                src="{% static 'assets/icons/figma.svg' %}"
+                style="width: 50px; height: 50px"
+              />
+            </div>
+            <div>Figma</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column align-items-center gap-3">
+    <h3>Proyek</h3>
+    <div class="d-flex overflow-x-auto">
+      <div class="d-flex flex-column align-items-center">
+        <img
+          src="{% static 'assets/images/laptop1.svg' %}"
+          alt="Chevron Right Icon"
+        />
+        <p class="fs-4 fw-semibold" style="color: #1470ef">Laptop</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <img
+          src="{% static 'assets/images/laptop1.svg' %}"
+          alt="Chevron Right Icon"
+        />
+        <p class="fs-4 fw-semibold" style="color: #1470ef">Laptop</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <img
+          src="{% static 'assets/images/laptop1.svg' %}"
+          alt="Chevron Right Icon"
+        />
+        <p class="fs-4 fw-semibold" style="color: #1470ef">Laptop</p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="pt-5 d-flex justify-content-center align-items-center mx-5 px-5"
+    style="margin-top: 100px"
+  >
+    <div class="row">
+      <div class="col-lg-7 d-flex flex-column gap-3">
+        <div>
+          <h3>
+            Mentoring yang <span style="color: #2e90fa">efektif</span> bukanlah
+            tentang mentransfer pengetahuan, tetapi tentang
+            <span style="color: #2e90fa">membangun hubungan.</span>
+          </h3>
+          <p>- Michael Bungay Stanier</p>
+        </div>
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center gap-2">
+            <div class="d-flex" style="color: #1470ef">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+            </div>
+            <span>5.0</span>
+          </div>
+          <p>Review Mentee</p>
+        </div>
+      </div>
+      <div class="col-lg-5 position-relative">
+        <div
+          class="card p-4 d-flex flex-column gap-4"
+          style="
+            border-radius: 20px;
+            width: 500px;
+            box-shadow: 0px 4px 4px rgba(20, 112, 239, 0.4);
+            position: relative;
+          "
+        >
+          <img
+            src="{% static 'assets/images/photo1.jpg' %}"
+            alt="Avatar"
+            class="rounded-circle position-absolute top-0 start-0 translate-middle"
+            style="
+              width: 60px;
+              height: 60px;
+              border: 2px solid #fff;
+              object-fit: cover;
+              z-index: 1;
+            "
+          />
+
+          <div class="d-flex flex-column gap-3">
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Doloremque esse illum magnam ea, sapiente ad suscipit nesciunt
+              repudiandae cumque eligendi sunt! Tempore officiis accusantium
+              enim, cumque dolor illo eaque quas.
+            </p>
+            <div>
+              <h5 class="fw-semibold">Samantha Lesia</h5>
+              <h6 style="color: #667085">2 Mei 2022</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    left: 20px;
+    border-left: 2px dashed #d9d9d9;
+    margin: 0;
+  }
+  .timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 30px;
+  }
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 5px solid #079455;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .timeline-item:last-child::before {
+    border: none;
+    background: #d9d9d9;
+  }
+</style>
+{% endblock %}

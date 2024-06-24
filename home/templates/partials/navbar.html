@@ -1,0 +1,42 @@
+{% load static %}
+<div class="navbar-top">
+  <div class="logo">
+    <img src="{% static 'assets/images/logo.png' %}" alt="Logo Carimentor" />
+    <p class="text-md-semibold text--brand-secondary">Sobat Mentor</p>
+  </div>
+  <div class="nav-fitur">
+    <a
+      href="{% url 'beranda' %}"
+      class="navbar-link text-md-reguler text--primary active"
+      >Home</a
+    >
+    <a
+      href="{% url 'carimentor' %}"
+      class="navbar-link text-md-reguler text--primary"
+      >Cari Mentor</a
+    >
+    <a href="carikelas" class="navbar-link text-md-reguler text--primary"
+      >Cari Kelas</a
+    >
+    <a href="jadimentor" class="navbar-link text-md-reguler text--primary"
+      >Jadi Mentor</a
+    >
+  </div>
+  <!-- <div class="nav-auth">
+      <a href="signIn" class="button-link text-md-medium text--white bg--brand-solid">Sign In</a>
+      <a href="signUp" class="button-link text-md-medium text--brand-primary">Sign Up</a>
+    </div> -->
+  <div class="nav-profil">
+    <a href="profil" class="button-link text-md-medium text--primary"
+      ><img src="{% static 'assets/icons/user.svg' %}" class="me-2" />Hai,
+      User</a
+    >
+  </div>
+</div>
+<!-- 
+<div
+  style="
+    background: linear-gradient(90deg, #85afc9 0%, #58707e 100%);
+    height: 64px;
+  "
+></div> -->

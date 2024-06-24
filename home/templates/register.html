@@ -1,0 +1,131 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="form-bg w-100 p-4 rounded shadow-sm">
+        <h2 class="text-center mb-4 fw-bold">Sign Up</h2>
+        <h5 class="text-center mb-4 fw-lighter" style="color: #858d9d">
+          Daftarkan akunmu sekarang juga!
+        </h5>
+
+        <div style="padding-left: 160px; padding-right: 160px">
+          <form method="post" class="fw-semibold">
+            {% csrf_token %}
+            <div class="form-group d-flex flex-column gap-2">
+              <label for="name"
+                >Nama <span style="color: #f14437">*</span></label
+              >
+              <input type="text" class="form-control" id="name" required />
+            </div>
+            <div class="form-group d-flex flex-column gap-2 mt-4">
+              <label for="username"
+                >Username <span style="color: #f14437">*</span></label
+              >
+              <input type="text" class="form-control" id="username" required />
+            </div>
+            <div class="form-group d-flex flex-column gap-2 mt-4">
+              <label for="email"
+                >Email <span style="color: #f14437">*</span></label
+              >
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="form-group d-flex flex-column gap-2 mt-4">
+              <label for="notelp"
+                >Nomor WhatsAapp <span style="color: #f14437">*</span></label
+              >
+              <input type="text" class="form-control" id="notelp" required />
+            </div>
+            <div class="form-group d-flex flex-column mt-4 position-relative">
+              <label for="password"
+                >Password <span style="color: #f14437">*</span></label
+              >
+              <div class="position-relative">
+                <input
+                  type="password"
+                  class="form-control mt-2 pe-5"
+                  id="password"
+                  required
+                />
+                <small
+                  class="form-text fw-normal"
+                  style="color: #858d9d; font-size: small"
+                  >Minimal 6 karakter</small
+                >
+                <img
+                  src="{% static 'assets/icons/eye-off.svg' %}"
+                  class="toggle-password"
+                  data-target="#password"
+                  style="
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-80%);
+                    cursor: pointer;
+                  "
+                />
+              </div>
+            </div>
+            <div
+              class="form-group d-flex flex-column gap-2 mt-4 position-relative"
+            >
+              <label for="conf-password"
+                >Konfirmasi Password
+                <span style="color: #f14437">*</span></label
+              >
+              <div class="position-relative">
+                <input
+                  type="password"
+                  class="form-control pe-5"
+                  id="conf-password"
+                  required
+                />
+                <img
+                  src="{% static 'assets/icons/eye-off.svg' %}"
+                  class="toggle-password"
+                  data-target="#conf-password"
+                  style="
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="d-flex flex-column mt-4">
+              <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+            <div class="text-center mt-4 fw-normal">
+              Sudah punya akun?
+              <a
+                href="{% url 'login' %}"
+                style="color: #2e90fa; text-decoration: none"
+                >Sign In</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".toggle-password").forEach(function (toggle) {
+    toggle.addEventListener("click", function () {
+      const target = document.querySelector(this.getAttribute("data-target"));
+      const type =
+        target.getAttribute("type") === "password" ? "text" : "password";
+      target.setAttribute("type", type);
+      this.src =
+        type === "password"
+          ? "{% static 'assets/icons/eye-off.svg' %}"
+          : "{% static 'assets/icons/eye.svg' %}";
+    });
+  });
+</script>
+{% endblock %} {% block footer %} {% endblock %}

@@ -25,8 +25,11 @@ def register_view(request):
         pengguna.save()
 
         return redirect('login')
-
-    return render(request, 'register.html')
+    
+    context = {
+        'page_title': 'Register'
+    }
+    return render(request, 'register.html', context)
 
 def login_view(request):
     if request.method == 'POST':
@@ -55,8 +58,11 @@ def login_view(request):
             return response
         else:
             return HttpResponse('Invalid username or password', status=400)
-
-    return render(request, 'login.html')
+        
+    context = {
+        'page_title': 'Login'
+    }
+    return render(request, 'login.html', context)
 
 def logout_view(request):
     response = redirect('login')
@@ -101,5 +107,53 @@ def home_view(request):
 
     return render(request, 'home.html', content)
 
-def index_view(request):
-    return render(request, 'index.html')
+def beranda_view(request):
+    context = {
+        'page_title': 'Home'
+    }
+    return render(request, 'beranda.html', context)
+
+def status_register_view(request):
+    context = {
+        'page_title': 'Status Register'
+    }
+    return render(request, 'status_register.html', context)
+    
+def transaksi_view (request):
+    context = {
+        'page_title': 'Transaksi'
+    }
+    return render(request, 'transaksi.html', context)
+
+def status_transaksi_view (request):
+    context = {
+        'page_title': 'Status Transaksi'
+    }
+    return render(request, 'status_transaksi.html', context)
+
+def cari_mentor_view(request):
+    mentors = range(8)
+
+    context = {
+        'mentors': mentors,
+        'page_title': 'Cari Mentor'
+    }
+    return render(request, 'cari_mentor.html', context)
+
+def detail_mentor_view(request):
+    context = {
+        'page_title': 'Detail Mentor'
+    }
+    return render(request, 'detail_mentor.html', context)
+
+def detail_kelas_view(request):
+    context = {
+        'page_title': 'Detail Kelas'
+    }
+    return render(request, 'detail_kelas.html', context)
+
+def aktivitas_view(request):
+    context = {
+        'page_title': 'Aktivitas'
+    }
+    return render(request, 'aktivitas.html', context)

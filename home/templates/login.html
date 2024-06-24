@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="form-bg w-100 p-4 rounded shadow-sm">
+        <h2 class="text-center mb-4 fw-bold">Sign In</h2>
+        <h5 class="text-center mb-4 fw-lighter" style="color: #858d9d">
+          Selamat datang kembali! Mohon verifikasi data diri Anda
+        </h5>
+
+        <div style="padding-left: 160px; padding-right: 160px">
+          <form method="post" class="fw-semibold">
+            {% csrf_token %}
+            <div class="form-group d-flex flex-column gap-2">
+              <label for="email"
+                >Alamat Email <span style="color: #f14437">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Masukkan email anda"
+                style="color: #a7b0b9"
+                required
+              />
+            </div>
+            <div class="form-group d-flex flex-column gap-2 mt-4">
+              <label for="password"
+                >Password <span style="color: #f14437">*</span></label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="********"
+                required
+              />
+            </div>
+            <div
+              class="form-group form-check mt-3 d-flex justify-content-between fw-normal"
+            >
+              <div>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="rememberMe"
+                />
+                <label class="form-check-label" for="rememberMe"
+                  >Ingat saya</label
+                >
+              </div>
+              <div>
+                <a href="#" class="float-right text-decoration-none"
+                  >Lupa password</a
+                >
+              </div>
+            </div>
+            <div class="d-flex flex-column mt-4">
+              <button type="submit" class="btn btn-primary">Sign In</button>
+              <a
+                href="#"
+                class="btn mt-3 border d-flex align-items-center justify-content-center"
+              >
+                <img
+                  src="{% static 'assets/icons/google.svg' %}"
+                  alt="Google Icon"
+                  width="30"
+                  height="30"
+                  style="margin-right: 10px"
+                />
+                Masuk dengan Google
+              </a>
+            </div>
+
+            <div class="text-center mt-4 fw-normal">
+              Belum punya akun?
+              <a
+                href="{% url 'register' %}"
+                style="color: #2e90fa; text-decoration: none"
+                >Sign Up</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block footer %} {% endblock %}

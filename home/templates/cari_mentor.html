@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container">
+  <div class="d-flex flex-column align-items-center gap-3">
+    <h1 class="fw-bold">TEMUKAN MENTORMU</h1>
+    <h4>Temukan mentor pilihanmu dan wujudkan impianmu!</h4>
+  </div>
+
+  <div class="d-flex flex-column align-items-center mt-4 mx-lg-5">
+    <h5>Cari Nama Mentor</h5>
+    <div class="input-group my-2" style="max-width: 1034px">
+      <input
+        type="text"
+        class="form-control text-center"
+        placeholder="Search"
+        aria-label="Cari nama mentor"
+      />
+    </div>
+  </div>
+  
+  <div class="d-flex flex-column align-items-center mt-4 mx-lg-5">
+    <h5>Kategori Kelas</h5>
+    <div class="d-flex align-items-center mt-2">
+      <img
+        src="{% static 'assets/icons/chevron-left.svg' %}"
+        alt="Arrow Left Icon"
+        width="20"
+        class="me-2"
+      />
+      <button type="button" class="btn {% if status == 'semua' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        Semua
+      </button>
+      <button type="button" class="btn {% if status == 'smp' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        SMP
+      </button>
+      <button type="button" class="btn {% if status == 'sma' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        SMA
+      </button>
+      <button type="button" class="btn {% if status == 'writing' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        Writing
+      </button>
+      <button type="button" class="btn {% if status == 'english' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        English
+      </button>
+      <button type="button" class="btn {% if status == 'webdev' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        Web Development
+      </button>
+      <button type="button" class="btn {% if status == 'design' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        Design
+      </button>
+      <button type="button" class="btn {% if status == 'speaking' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+        Speaking
+      </button>
+      <img
+        src="{% static 'assets/icons/chevron-right.svg' %}"
+        alt="Arrow Right Icon"
+        width="20"
+        class="me-2"
+      />
+    </div>
+  </div>
+  
+
+  <div class="mt-5 d-flex flex-wrap justify-content-center gap-4 px-1">
+    {% for mentor in mentors %} 
+      {% include 'partials/cari_card.html' %} 
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

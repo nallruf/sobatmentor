@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Transaksi | Sobat Mentor</title>
+    <!-- <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="css/custom.css" /> -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom.css' %}" />
+
+    <style>
+      .component-13 {
+        border-radius: 8px;
+        border: 1px solid #1470ef;
+        margin-right: 59px;
+        display: flex;
+        flex-direction: column;
+        padding: 19px 46px 20px 44px;
+        box-sizing: border-box;
+      }
+
+      .container-3 {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+      }
+      .container-7 {
+        position: relative;
+        margin: 0 99px 50px 100px;
+        display: flex;
+        box-sizing: border-box;
+      }
+
+      .group-48095902 {
+        margin-right: 3px;
+        display: flex;
+        box-sizing: border-box;
+      }
+
+      .group-48095905 {
+        margin: 0 2px 10.2px 2px;
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        width: fit-content;
+        box-sizing: border-box;
+      }
+
+      .panduan-pembayaran {
+        overflow-wrap: break-word;
+        font-family: var(--text-xs-medium-font-family, "Poppins");
+        font-weight: var(--text-xs-medium-font-weight, 500);
+        font-size: var(--text-xs-medium-font-size, 12px);
+        line-height: var(--text-xs-medium-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .lihat-di-sini {
+        overflow-wrap: break-word;
+        font-family: var(--text-xs-medium-font-family, "Poppins");
+        font-weight: var(--text-xs-medium-font-weight, 500);
+        font-size: var(--text-xs-medium-font-size, 12px);
+        line-height: var(--text-xs-medium-line-height, 1.5);
+        color: #2e90fa;
+      }
+
+      .check-box {
+        margin: 0 2px 22.8px 2px;
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        width: fit-content;
+        box-sizing: border-box;
+      }
+
+      .base-checkbox-states {
+        margin: 1.3px 8px 0.7px 0;
+        display: flex;
+        width: 16px;
+        height: 16px;
+        box-sizing: border-box;
+      }
+
+      .base {
+        border-radius: 4px;
+        border: 1px solid #858d9d;
+        background: #ffffff;
+        width: 16px;
+        height: 16px;
+      }
+
+      .base-checkbox-content-states {
+        display: flex;
+        box-sizing: border-box;
+      }
+
+      .checkbox-text {
+        overflow-wrap: break-word;
+        font-family: var(--text-xs-reguler-font-family, "Poppins");
+        font-weight: var(--text-xs-reguler-font-weight, 400);
+        font-size: var(--text-xs-reguler-font-size, 12px);
+        line-height: var(--text-xs-reguler-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .checkbox-text-sub1 {
+        font-family: "Poppins";
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.333;
+        color: #2e90fa;
+      }
+
+      .button-4 {
+        overflow-wrap: break-word;
+        font-family: var(--text-lg-medium-font-family, "Poppins");
+        font-weight: var(--text-lg-medium-font-weight, 500);
+        font-size: var(--text-lg-medium-font-size, 18px);
+        line-height: var(--text-lg-medium-line-height, 1.556);
+        color: #ffffff;
+      }
+
+      .button {
+        border-radius: 8px;
+        background: #1470ef;
+        display: flex;
+        padding: 6px 0.1px 6px 0;
+        width: 641px;
+        box-sizing: border-box;
+      }
+
+      .detail-pemesanan {
+        margin-bottom: 29px;
+        display: inline-block;
+        align-self: flex-start;
+        overflow-wrap: break-word;
+        font-family: var(--display-xs-semibold-font-family, "Poppins");
+        font-weight: var(--display-xs-semibold-font-weight, 600);
+        font-size: var(--display-xs-semibold-font-size, 24px);
+        line-height: var(--display-xs-semibold-line-height, 1.333);
+        color: #000000;
+      }
+
+      .kode-kelas {
+        margin-right: 12px;
+        width: 275px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .mp-12-sma {
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .container-1 {
+        margin: 0 0.9px 12px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* width: 367.1px; */
+        box-sizing: border-box;
+      }
+
+      .component-14 {
+        border-radius: 8px;
+        border: 1px solid #1470ef;
+        margin-bottom: 7px;
+        display: flex;
+        flex-direction: column;
+        padding: 18px 42px 16px 37px;
+        box-sizing: border-box;
+      }
+
+      .container-6 {
+        margin: 0 0px 12px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* width: 368px; */
+        box-sizing: border-box;
+      }
+
+      .nama-kelas {
+        margin: 0 12px 25px 0;
+        display: inline-block;
+        width: 158.1px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .matematika-peminatan-kelas-12 {
+        margin-top: 1px;
+        display: inline-block;
+        text-align: right;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .nama-mentor {
+        margin: 0 12px 1px 0;
+        display: inline-block;
+        width: 267px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .lilia-devina {
+        margin-top: 1px;
+        display: inline-block;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .container-8 {
+        margin-bottom: 11px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* width: 368px; */
+        box-sizing: border-box;
+      }
+
+      .tipe-kelas {
+        margin-bottom: 12px;
+        display: inline-block;
+        align-self: flex-start;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .jadwal-kelas {
+        margin-bottom: 10px;
+        display: inline-block;
+        align-self: flex-start;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .jumlah-pertemuan {
+        margin: 2px 12px 0 0;
+        display: inline-block;
+        width: 277px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .pertemuan {
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .container {
+        margin: 0 0.9px 9px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* width: 367.1px; */
+        box-sizing: border-box;
+      }
+
+      .harga {
+        margin: 2px 12px 0 0;
+        display: inline-block;
+        width: 277px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .rp-50000 {
+        margin-bottom: 2px;
+        display: inline-block;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .container-2 {
+        margin: 0 0.6px 10px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* width: 367.4px; */
+        box-sizing: border-box;
+      }
+
+      .no-virtual-account {
+        margin: 2px 12px 0 0;
+        display: inline-block;
+        width: 195px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .container {
+        margin-bottom: 2px;
+        display: inline-block;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #14161b;
+      }
+
+      .container-5 {
+        margin: 0 0.2px 8px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* width: 367.8px; */
+        box-sizing: border-box;
+      }
+
+      .kode-promo {
+        margin: 12px 12px 8px 0;
+        display: inline-block;
+        width: 166px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #525a6a;
+      }
+
+      .button-5 {
+        overflow-wrap: break-word;
+        font-family: var(--text-lg-bold-font-family, "Inter");
+        font-weight: var(--text-lg-bold-font-weight, 700);
+        font-size: var(--text-lg-bold-font-size, 18px);
+        line-height: var(--text-lg-bold-line-height, 1.556);
+        color: #ffffff;
+      }
+
+      .button-1 {
+        border-radius: 8px;
+        background: #1470ef;
+        position: relative;
+        display: flex;
+        padding: 3.1px 10.2px 3px 9.4px;
+        box-sizing: border-box;
+      }
+
+      .masukan-kode {
+        overflow-wrap: break-word;
+        font-family: var(--text-xs-medium-font-family, "Poppins");
+        font-weight: var(--text-xs-medium-font-weight, 500);
+        font-size: var(--text-xs-medium-font-size, 12px);
+        line-height: var(--text-xs-medium-line-height, 1.5);
+        color: #c2c6ce;
+      }
+
+      .group-48095903 {
+        border-radius: 8px;
+        position: absolute;
+        left: 50%;
+        bottom: 0px;
+        translate: -50% 0;
+        padding: 12.7px 9.4px 13.3px 9.4px;
+        width: 189px;
+        box-sizing: border-box;
+      }
+
+      .group-48095904 {
+        border-radius: 8px;
+        position: relative;
+        display: flex;
+        padding: 5.5px 3.6px 4.4px 3.6px;
+        width: 189px;
+        box-sizing: border-box;
+      }
+
+      .container-9 {
+        margin: 0 0px 0 1px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 367px;
+        box-sizing: border-box;
+      }
+
+      .frame-48096082 {
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        width: fit-content;
+        box-sizing: border-box;
+      }
+
+      .pilih-1 {
+        margin-right: 12px;
+        width: 147px;
+        overflow-wrap: break-word;
+        font-family: var(--text-md-reguler-font-family, "Poppins");
+        font-weight: var(--text-md-reguler-font-weight, 400);
+        font-size: var(--text-md-reguler-font-size, 16px);
+        line-height: var(--text-md-reguler-line-height, 1.5);
+        color: #858d9d;
+      }
+
+      .vector-2371 {
+        margin: 10px 0;
+        width: 6px;
+        height: 4px;
+      }
+
+      .component-16 {
+        border-radius: 8px;
+        position: absolute;
+        top: 50%;
+        right: 43px;
+        translate: 0 -50%;
+        display: flex;
+        width: 185px;
+        box-sizing: border-box;
+      }
+
+      .frame-48096283 {
+        border-radius: 8px;
+        background: #ffffff;
+        position: absolute;
+        left: 50%;
+        top: -120px;
+        translate: -50% 0;
+        display: flex;
+        flex-direction: column;
+        padding: 12px 0 17px 10px;
+        width: 185px;
+        box-sizing: border-box;
+      }
+
+      .component-151 {
+        margin-bottom: 24px;
+        display: flex;
+        align-self: flex-start;
+        box-sizing: border-box;
+      }
+
+      .component-15 {
+        margin: 0 4.3px 16px 0;
+        display: flex;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body style="background-color: #fff">
+    <div class="navbar-top">
+      <div class="logo">
+        <img src="assets/images/logo.png" alt="" />
+        <p class="text-md-semibold text--brand-secondary">Sobat Mentor</p>
+      </div>
+      <div class="nav-fitur">
+        <a href="index.html" class="navbar-link text-md-reguler text--primary">Home</a>
+        <a href="carimentor.html" class="navbar-link text-md-reguler text--primary">Cari Mentor</a>
+        <a href="" class="navbar-link text-md-reguler text--primary active">Cari Kelas</a>
+        <a href="" class="navbar-link text-md-reguler text--primary">Jadi Mentor</a>
+      </div>
+      <!-- <div class="nav-auth">
+        <a href="signIn.html" class="button-link text-md-medium text--white bg--brand-solid">Sign In</a>
+        <a href="signUp.html" class="button-link text-md-medium text--brand-primary">Sign Up</a>
+      </div> -->
+      <div class="nav-profil">
+        <a href="profil.html" class="button-link text-md-medium text--primary"><img src="assets/icons/user.svg" alt="" class="me-2" />Hai, User</a>
+      </div>
+    </div>
+    <div class="content">
+      <section class="main-title">
+        <div class="main-title">
+          <h1 class="title display-lg-semibold text-primarycolor">PEMBELIAN</h1>
+          <p class="text-xl-reguler text-primarycolor">Selesaikan pemesanan untuk mendapatkan mentor yang kamu inginkan!</p>
+        </div>
+      </section>
+      <section>
+        <div class="container-7">
+          <div class="container-3">
+            <div class="component-13">
+              <p class="display-xs-bold">Info Pemesanan</p>
+              <div class="text-md-reguler">
+                <div class="email">
+                  <label>Email</label>
+                  <input type="email" class="text-md-reguler p-2 rounded-3 w-100" required />
+                </div>
+                <br />
+                <div class="nama-lengkap">
+                  <label>Nama Lengkap</label>
+                  <input type="text" class="text-md-reguler p-2 rounded-3 w-100" required />
+                </div>
+
+                <div class="alamat">
+                  <label>Alamat</label>
+                  <input type="text" class="text-md-reguler p-2 rounded-3 w-100" required />
+                </div>
+                <div class="nomor-whats-app">
+                  <label>Nomor WhatsApp</label>
+                  <input type="text" class="text-md-reguler p-2 rounded-3 w-100" required />
+                </div>
+              </div>
+              <div class="group-48095905">
+                <div class="group-48095902">
+                  <span class="panduan-pembayaran">Panduan pembayaran</span>
+                </div>
+                <span class="lihat-di-sini">Lihat di sini.</span>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="" class="text-md-reguler" />
+                <label for="remember" class="text-md-reguler">Saya menyetujui semua syarat dan ketentuan yang berlaku.</label>
+              </div>
+              <button type="submit" class="button-link text-md-medium text-white bg--brand-solid">Lanjutkan Pembayaran</button>
+            </div>
+            <div class="component-14">
+              <div class="detail-pemesanan">Detail Pemesanan</div>
+              <div class="container-1">
+                <span class="kode-kelas"> Kode Kelas </span>
+                <span class="mp-12-sma"> MP12-SMA </span>
+              </div>
+              <div class="container-6">
+                <div class="nama-kelas">Nama Kelas</div>
+                <div class="matematika-peminatan-kelas-12">
+                  Matematika Peminatan<br />
+                  - kelas 12
+                </div>
+              </div>
+              <div class="container-8">
+                <div class="nama-mentor">Nama Mentor</div>
+                <div class="lilia-devina">Lilia Devina</div>
+              </div>
+              <div class="d-flex justify-content-between">
+                Tipe Kelas
+                <select name="" id="">
+                  <option value="">Online</option>
+                  <option value="">Offline</option>
+                  <option value="">Blended</option>
+                </select>
+              </div>
+              <div class="jadwal-kelas">
+                Jadwal Kelas
+                <select name="" id="">
+                  <option value="">1x/minggu, Senin 19:00 WIB</option>
+                  <option value="">2x/minggu, Senin - Rabu 19:00 WIB</option>
+                  <option value="">3x/minggu, Senin - Rabu - Jumat 19:00 WIB</option>
+                </select>
+              </div>
+              <div class="container">
+                <span class="jumlah-pertemuan"> Jumlah Pertemuan </span>
+                <span class="pertemuan"> 1 Pertemuan </span>
+              </div>
+              <div class="container-2">
+                <div class="harga">Harga</div>
+                <div class="rp-50000">Rp 50.000</div>
+              </div>
+              <div class="container-5">
+                <div class="no-virtual-account">No. Virtual Account</div>
+                <div class="container text-end">0000000000000000</div>
+              </div>
+
+              <!-- <div class="container-9">
+                <div class="kode-promo">Kode Promo</div>
+                <div class="group-48095904">
+                  <input type="text" placeholder="Masukkan Kode" />
+                  <div class="button-1">
+                    <span class="button-5"> → </span>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

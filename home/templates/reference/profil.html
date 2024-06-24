@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Page | Sobat Mentor</title>
+    <!-- <link rel="stylesheet" href="css/custom.css" /> -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom.css' %}" />
+    <!-- <link rel="stylesheet" href="style/style.css" /> -->
+
+    <style>
+      /* CSS PROFIL */
+      .profile .overlap {
+        position: absolute;
+        /* width: 1440px; */
+        height: 425px;
+        top: 108px;
+        left: 0;
+      }
+
+      .profile .general-mathematics {
+        /* position: absolute; */
+        /* width: 144px; */
+        /* height: 244px; */
+        top: 0;
+        left: 0;
+        /* object-fit: cover; */
+      }
+
+      .profile .text-wrapper {
+        position: absolute;
+        width: 760px;
+        top: 334px;
+        left: 432px;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        color: #000000;
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .profile .group {
+        position: absolute;
+        width: 603px;
+        height: 264px;
+        top: 161px;
+        left: 144px;
+      }
+
+      .profile .div {
+        width: 311px;
+        top: 139px;
+        left: 288px;
+        color: var(--color-text-text-quatenary);
+        position: absolute;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .profile .text-wrapper-2 {
+        position: absolute;
+        width: 229px;
+        top: 103px;
+        left: 287px;
+        font-family: "Inter-SemiBold", Helvetica;
+        font-weight: 600;
+        color: var(--color-text-text-primary);
+        font-size: 30px;
+        letter-spacing: 0;
+        line-height: 25px;
+      }
+
+      .profile .overlap-group {
+        position: absolute;
+        width: 264px;
+        height: 264px;
+        top: 0;
+        left: 0;
+        background-color: var(--color-text-text-brand-secondary);
+        border-radius: 132.09px;
+      }
+
+      .profile .img {
+        position: absolute;
+        width: 244px;
+        height: 244px;
+        top: 10px;
+        left: 9px;
+      }
+
+      .profile .icons-wrapper {
+        position: absolute;
+        /* width: 72px;
+  height: 72px; */
+        top: 182px;
+        left: 180px;
+        background-color: var(--color-text-text-brand-secondary);
+        /* border-radius: 36px; */
+      }
+
+      .profile .icons {
+        position: absolute;
+        /* width: 32px;
+  height: 32px; */
+        /* top: 20px;
+  left: 20px; */
+      }
+
+      .profile .frame-wrapper {
+        position: absolute;
+        width: 1264px;
+        height: 370px;
+        top: 460px;
+        left: 88px;
+        background-color: #ffffff;
+        border-radius: 8px;
+      }
+
+      .profile .frame {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        position: relative;
+        top: 36px;
+        left: 56px;
+      }
+
+      /* .profile .text-wrapper-3 {
+  position: relative;
+  width: 310.98px;
+  height: 35.36px;
+  margin-top: -1px;
+  font-family: var(--text-lg-semibold-font-family);
+  font-weight: var(--text-lg-semibold-font-weight);
+  color: var(--color-text-text-primary);
+  font-size: var(--text-lg-semibold-font-size);
+  letter-spacing: var(--text-lg-semibold-letter-spacing);
+  line-height: var(--text-lg-semibold-line-height);
+  font-style: var(--text-lg-semibold-font-style);
+} */
+
+      .profile .frame-2 {
+        display: flex;
+        width: 1152px;
+        align-items: flex-start;
+        justify-content: space-between;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .profile .frame-3 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .profile .frame-4 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .profile .text-wrapper-4 {
+        position: relative;
+        width: 310.98px;
+        height: 35.36px;
+        margin-top: -1px;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        color: var(--color-text-text-primary);
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .profile .overlap-group-wrapper {
+        position: relative;
+        width: 562px;
+        height: 44.36px;
+        margin-right: -2px;
+      }
+
+      .profile .div-wrapper {
+        position: relative;
+        width: 560px;
+        height: 44px;
+        background-color: #f0f5f8;
+        border-radius: 8px;
+      }
+
+      .profile .text-wrapper-5 {
+        width: 287px;
+        top: 9px;
+        left: 22px;
+        color: var(--color-text-text-primary);
+        position: absolute;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .profile .text-wrapper-6 {
+        position: absolute;
+        width: 311px;
+        top: 9px;
+        left: 24px;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        color: var(--color-text-text-primary);
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .profile .frame-5 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        position: relative;
+        align-self: stretch;
+        flex: 0 0 auto;
+      }
+
+      .profile .frame-6 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        gap: 16px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .profile .text-wrapper-7 {
+        position: relative;
+        width: 310.98px;
+        height: 35.36px;
+        margin-top: -1px;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        color: #0f0f0f;
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .profile .text-wrapper-8 {
+        position: absolute;
+        width: 477px;
+        top: 9px;
+        left: 18px;
+        font-family: var(--text-md-reguler-font-family);
+        font-weight: var(--text-md-reguler-font-weight);
+        color: var(--color-text-text-primary);
+        font-size: var(--text-md-reguler-font-size);
+        letter-spacing: var(--text-md-reguler-letter-spacing);
+        line-height: var(--text-md-reguler-line-height);
+        font-style: var(--text-md-reguler-font-style);
+      }
+
+      .profile .button {
+        all: unset;
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 8px 24px;
+        position: relative;
+        flex: 0 0 auto;
+        background-color: var(--color-background-bg-brand-solid);
+        border-radius: 8px;
+      }
+
+      .profile .button-2 {
+        all: unset;
+        box-sizing: border-box;
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: var(--text-md-medium-font-family);
+        font-weight: var(--text-md-medium-font-weight);
+        color: var(--color-text-text-white);
+        font-size: var(--text-md-medium-font-size);
+        letter-spacing: var(--text-md-medium-letter-spacing);
+        line-height: var(--text-md-medium-line-height);
+        white-space: nowrap;
+        font-style: var(--text-md-medium-font-style);
+      }
+    </style>
+  </head>
+  <body style="font-family: Poppins">
+    <div class="navbar-top">
+      <div class="logo">
+        <img src="assets/images/logo.png" alt="" />
+        <p class="text-md-semibold text--brand-secondary">Sobat Mentor</p>
+      </div>
+      <div class="nav-fitur">
+        <a href="index.html" class="navbar-link text-md-reguler text--primary">Home</a>
+        <a href="carimentor.html" class="navbar-link text-md-reguler text--primary">Cari Mentor</a>
+        <a href="carikelas.html" class="navbar-link text-md-reguler text--primary">Cari Kelas</a>
+        <a href="" class="navbar-link text-md-reguler text--primary">Jadi Mentor</a>
+      </div>
+      <!-- <div class="nav-auth">
+        <a href="signIn.html" class="button-link text-md-medium text--white bg--brand-solid">Sign In</a>
+        <a href="signUp.html" class="button-link text-md-medium text--brand-primary">Sign Up</a>
+      </div> -->
+      <div class="nav-profil">
+        <a href="" class="button-link text-md-medium text--primary"><img src="assets/icons/user.svg" alt="" class="me-2" />Hai, User</a>
+      </div>
+    </div>
+    <div class="profile">
+      <div class="overlap">
+        <img class="w-100" src="../static/assets/images/bg-profil.png" />
+        <p class="text-wrapper">Saya Adalah Seorang mahasiswa semester 3 yang memiliki minat dalam bidang matematika</p>
+        <div class="group">
+          <div class="div">Johan Jonathan</div>
+          <div class="text-wrapper-2">Jojo777</div>
+          <div class="overlap-group">
+            <img class="Images" src="../static/assets/images/photo-profil.png" />
+            <div class="icons-wrapper"><img class="icons bg--brand-solid p-3 rounded-5" src="assets/icons/edit.svg" /></div>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame">
+            <div class="text-lg-semibold">Identitas Diri</div>
+            <div class="frame-2">
+              <div class="frame-3">
+                <div class="frame-4">
+                  <div class="text-md-reguler">Username :</div>
+                  <div class="overlap-group-wrapper">
+                    <div class="div-wrapper"><div class="text-wrapper-5">JOHAN</div></div>
+                  </div>
+                </div>
+                <div class="frame-4">
+                  <div class="text-md-reguler">Jenis Kelamin :</div>
+                  <div class="overlap-group-wrapper">
+                    <div class="div-wrapper"><div class="text-wrapper-6">Laki-laki</div></div>
+                  </div>
+                </div>
+                <div class="frame-4">
+                  <div class="text-md-reguler">Nomor Telepon :</div>
+                  <div class="overlap-group-wrapper">
+                    <div class="div-wrapper"><div class="text-wrapper-6">0899 9909 911</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="frame-5">
+                <div class="frame-6">
+                  <div class="frame-4">
+                    <div class="text-wrapper-7">Nama :</div>
+                    <div class="overlap-group-wrapper">
+                      <div class="div-wrapper"><div class="text-wrapper-6">Jonathan</div></div>
+                    </div>
+                  </div>
+                  <div class="frame-4">
+                    <div class="text-md-reguler">Email :</div>
+                    <div class="overlap-group-wrapper">
+                      <div class="div-wrapper"><div class="text-wrapper-8">jojo777@gmail.com</div></div>
+                    </div>
+                  </div>
+                </div>
+                <a class="button-link bg--brand-solid text-white text-md-medium">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
