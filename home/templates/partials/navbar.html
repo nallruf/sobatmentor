@@ -22,21 +22,24 @@
       >Jadi Mentor</a
     >
   </div>
-  <!-- <div class="nav-auth">
-      <a href="signIn" class="button-link text-md-medium text--white bg--brand-solid">Sign In</a>
-      <a href="signUp" class="button-link text-md-medium text--brand-primary">Sign Up</a>
-    </div> -->
+  {% if pengguna %}
   <div class="nav-profil">
     <a href="profil" class="button-link text-md-medium text--primary"
-      ><img src="{% static 'assets/icons/user.svg' %}" class="me-2" />Hai,
-      User</a
+      ><img src="{% static 'assets/icons/user.svg' %}" class="me-2" />Hai, {{ pengguna.nama }}</a
     >
   </div>
+  {% else %}
+  <div class="nav-auth">
+    <a
+      href="{% url 'login' %}"
+      class="button-link text-md-medium text--white bg--brand-solid"
+      >Sign In</a
+    >
+    <a
+      href="{% url 'register' %}"
+      class="button-link text-md-medium text--brand-primary"
+      >Sign Up</a
+    >
+  </div>
+  {% endif %}
 </div>
-<!-- 
-<div
-  style="
-    background: linear-gradient(90deg, #85afc9 0%, #58707e 100%);
-    height: 64px;
-  "
-></div> -->

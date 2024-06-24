@@ -6,10 +6,10 @@ from .views import *
 urlpatterns = [
     path('', beranda_view, name='beranda'),
     path('carimentor/', cari_mentor_view, name='carimentor'),
-    path('carimentor/detailmentor/', detail_mentor_view, name='detailmentor'),
-    path('carimentor/detailmentor/detailkelas', detail_kelas_view, name='detailkelas'),
-    path('transaksi/', transaksi_view, name='transaksi'),
-    path('transaksi/status/', status_transaksi_view, name='statustransaksi'),
+    path('carimentor/<int:mentor_id>/', detail_mentor_view, name='detail_mentor'),
+    path('detailkelas/<int:kelas_id>/', detail_kelas_view, name='detail_kelas'),
+    # path('transaksi/', transaksi_view, name='transaksi'),
+    # path('transaksi/status/', status_transaksi_view, name='statustransaksi'),
     path('aktivitas/', aktivitas_view, name='aktivitas'),
     
     path('login/', login_view, name='login'),
@@ -20,7 +20,7 @@ urlpatterns = [
     # path('', index_view, name='home'),
 
     # path('mentor/<int:mentor_id>/', detail_mentor_view, name='detail_mentor'),
-    path('kelas/<int:kelas_id>/', detail_kelas_view, name='detail_kelas'),
+    # path('kelas/<int:kelas_id>/', detail_kelas_view, name='detail_kelas'),
     path('booking/<int:kelas_id>/<int:paket_id>/', booking_view, name='booking'),
     path('success/', transaksi_success_view, name='success'),
     path('aktifitas/', mentoring_aktip, name='aktifitas'),

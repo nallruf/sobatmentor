@@ -137,44 +137,12 @@ def home_view(request):
     }
     return render(request, 'home_z.html', content)
  
-
-def cari_mentor_view(request):
-    # Mengambil semua kategori kelas
-    list_kategori = Kategori.objects.all()
-    
-    # Mengambil filter kategori dari parameter URL jika ada
-    kategori_id = request.GET.get('kategori')
-    nama_mentor = request.GET.get('nama_mentor')
-
-    mentors = Mentor.objects.all()
-
-    if kategori_id:
-        mentors = mentors.filter(kelas__kategori_kelas_id=kategori_id).distinct()
-
-    if nama_mentor:
-        mentors = mentors.filter(pengguna__nama__icontains=nama_mentor).distinct()
-
-    # Menambahkan informasi tambahan untuk setiap mentor
-    for mentor in mentors:
-        mentor.foto_pengguna = mentor.pengguna.foto
-        mentor.total_kelas = mentor.kelas_set.count()
-        # Mengambil semua kategori kelas yang diajar oleh mentor
-        mentor.kategori_kelas_list = list(set(kelas.kategori_kelas for kelas in mentor.kelas_set.all()))
-
-    context = {
-        'list_kategori': list_kategori,
-        'mentors': mentors,
-        'selected_kategori': kategori_id,
-        'nama_mentor': nama_mentor,
-    }
-    
-    return render(request, 'cari_mentor_z.html', context)
-
 def detail_mentor_view(request, mentor_id):
     mentor = get_object_or_404(Mentor, id=mentor_id)
     kelas_list = Kelas.objects.filter(mentor=mentor)
     pengalaman_kerja_list = PengalamanKerja.objects.filter(mentor=mentor)
     pengalaman_mengajar_list = PengalamanMengajar.objects.filter(mentor=mentor)
+    pengalaman_organisasi_list = PengalamanOrganisasi.objects.filter(mentor=mentor)
     kontak = KontakMentor.objects.get(mentor=mentor)
     skills_list = skill_mentor.objects.filter(mentor=mentor)
     projects_list = project_mentor.objects.filter(mentor=mentor)
@@ -189,13 +157,14 @@ def detail_mentor_view(request, mentor_id):
         'kelas_list': kelas_list,
         'pengalaman_kerja_list': pengalaman_kerja_list,
         'pengalaman_mengajar_list': pengalaman_mengajar_list,
+        'pengalaman_organisasi_list': pengalaman_organisasi_list,
         'kontak': kontak,
         'skills_list': skills_list,
         'projects_list': projects_list,
         'penilaian_list': penilaian_list,
     }
 
-    return render(request, 'detail_mentor_z.html', context)
+    return render(request, 'detail_mentor.html', context)
 
 def detail_kelas_view(request, kelas_id):
     kelas = get_object_or_404(Kelas, id=kelas_id)
@@ -205,7 +174,7 @@ def detail_kelas_view(request, kelas_id):
         'kelas': kelas,
         'paket_kelas': paket_kelas,
     }
-    return render(request, 'detail_kelas_z.html', context)
+    return render(request, 'detail_kelas.html', context)
 
 
 def booking_view(request, kelas_id, paket_id):
@@ -225,7 +194,7 @@ def booking_view(request, kelas_id, paket_id):
     mentor = kelas.mentor
     metode_pembayaran = mentor.metode_pembayaran
 
-    return render(request, 'booking_z.html', {
+    return render(request, 'transaksi.html', {
         'user': user,
         'kelas': kelas,
         'paket': paket,
@@ -271,7 +240,7 @@ def booking_submit_view(request):
         return redirect('success')
 
 def transaksi_success_view(request):
-    return render(request, 'success_z.html')
+    return render(request, 'status_transaksi.html')
 
 def mentoring_aktip(request):
 
@@ -496,10 +465,11 @@ def detail_mentor_view(request, mentor_id):
     kelas_list = Kelas.objects.filter(mentor=mentor)
     pengalaman_kerja_list = PengalamanKerja.objects.filter(mentor=mentor)
     pengalaman_mengajar_list = PengalamanMengajar.objects.filter(mentor=mentor)
+    pengalaman_organisasi_list = PengalamanOrganisasi.objects.filter(mentor=mentor)
     kontak = KontakMentor.objects.get(mentor=mentor)
     skills_list = skill_mentor.objects.filter(mentor=mentor)
     projects_list = project_mentor.objects.filter(mentor=mentor)
-    penilaian_list = Penilaian.objects.filter(kelas__mentor=mentor)
+    penilaian_list = Penilaian.objects.filter(kelas__mentor=mentor)[:1]
 
 
     for kelas in kelas_list:
@@ -510,6 +480,7 @@ def detail_mentor_view(request, mentor_id):
         'kelas_list': kelas_list,
         'pengalaman_kerja_list': pengalaman_kerja_list,
         'pengalaman_mengajar_list': pengalaman_mengajar_list,
+        'pengalaman_organisasi_list': pengalaman_organisasi_list,
         'kontak': kontak,
         'skills_list': skills_list,
         'projects_list': projects_list,
@@ -519,12 +490,6 @@ def detail_mentor_view(request, mentor_id):
     }
 
     return render(request, 'detail_mentor.html', context)
-
-def detail_kelas_view(request):
-    context = {
-        'page_title': 'Detail Kelas'
-    }
-    return render(request, 'detail_kelas.html', context)
 
 def aktivitas_view(request):
     context = {

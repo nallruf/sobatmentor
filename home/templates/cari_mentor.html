@@ -50,13 +50,13 @@
     </div>
   </div>
   
-  {% for mentor in mentors %}
   <div class="mt-5 d-flex flex-wrap justify-content-center gap-4 px-1">
+    {% for mentor in mentors %}
     <a href="{% url 'detail_mentor' mentor.id %}" class="text-decoration-none">
       <div class="position-relative" style="width: 21.25rem; height: 26.7rem">
         <div>
           <img
-            src="{{ mentor.foto_pengguna }}"
+            src="{{ mentor.foto_pengguna.url }}"
             alt="{{ mentor.pengguna.nama }}"
             class="rounded-4 object-fit-cover"
             style="width: 21.25rem; height: 26.74825rem"
@@ -73,7 +73,7 @@
                 style="width: fit-content"
               >
                 {% for kategori in mentor.kategori_kelas_list %} 
-                {{ kategori.nama_kategori }} 
+                {{ kategori.nama_kategori }},
                 {% endfor %}
               </h6>
             </div>
@@ -87,7 +87,7 @@
         </div>
       </div>
     </a>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 {% endblock %}
