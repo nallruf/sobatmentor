@@ -1,0 +1,34 @@
+<!-- templates/detail_kelas.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Kelas</title>
+</head>
+<body>
+    <h1>{{ kelas.nama_kelas }}</h1>
+    <img src="{{ kelas.foto }}" alt="{{ kelas.nama_kelas }}">
+    <p>Nama Mentor: {{ kelas.mentor.pengguna.nama }}</p>
+    <p>Deskripsi: {{ kelas.deskripsi }}</p>
+    <p>Silabus: {{ kelas.silabus }}</p>
+
+    <h2>Paket Kelas</h2>
+    <ul>
+        {% for paket in paket_kelas %}
+        <li>
+            <p>{{ paket.nama }}</p>
+            <p>Tipe: {{ paket.tipe }}</p>
+            <p>Hari: {{ paket.hari }}</p>
+            <p>Jam: {{ paket.jam }}</p>
+            <p>Harga: {{ paket.harga_kelas }}</p>
+            <p>Total pertemuan: {{ paket.jumlah_pertemuan }}</p>
+            <form action="{% url 'booking' kelas.id paket.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -6,7 +6,7 @@ class DetailTransaksi(models.Model):
     id = models.AutoField(primary_key=True)
     transaksi = models.ForeignKey('Transaksi', on_delete=models.CASCADE)
     kelas = models.ForeignKey('Kelas', on_delete=models.CASCADE)
-    tipe_kelas = models.CharField(max_length=255)
+    tipe_kelas = models.CharField(max_length=255, null=True)
     paket_kelas = models.ForeignKey('PaketKelas', on_delete=models.CASCADE)
     biaya_kelas = models.IntegerField()
 
@@ -18,6 +18,10 @@ class PengalamanKerja(models.Model):
     id = models.AutoField(primary_key=True)
     mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE)
     nama = models.CharField(max_length=255)
+    tempat = models.CharField(max_length=255, null=True)
+    waktu = models.CharField(max_length=255, null=True)
+    deskripsi = models.CharField(max_length=255, null=True)
+    keahlian = models.CharField(max_length=255, null=True)
     bukti = models.CharField(max_length=255)
 
     def __str__(self):
@@ -38,6 +42,10 @@ class PengalamanMengajar(models.Model):
     id = models.AutoField(primary_key=True)
     mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE)
     nama = models.CharField(max_length=255)
+    tempat = models.CharField(max_length=255, null=True)
+    waktu = models.CharField(max_length=255, null=True)
+    deskripsi = models.CharField(max_length=255, null=True)
+    keahlian = models.CharField(max_length=255, null=True)
     bukti = models.CharField(max_length=255)
 
     def __str__(self):
@@ -89,6 +97,7 @@ class PaketKelas(models.Model):
     tipe = models.CharField(max_length=10, choices=[('offline', 'offline'), ('online', 'online')])
     hari = models.CharField(max_length=255)
     jam = models.CharField(max_length=255)
+    jumlah_pertemuan = models.IntegerField(default=1)
     harga_kelas = models.IntegerField()
 
     def __str__(self):
@@ -107,10 +116,15 @@ class Mentor(models.Model):
     program_studi = models.CharField(max_length=255)
     semester = models.CharField(max_length=255)
     nim = models.CharField(max_length=255)
+    bio = models.CharField(max_length=255, null=True)
+    usia = models.IntegerField(default=0)
+    metode_pembayaran = models.ForeignKey('MetodePembayaran', on_delete=models.CASCADE, null=True)
+    video_profile = models.CharField(max_length=255, null=True)
     status = models.CharField(max_length=10, choices=[('aktif', 'aktif'), ('pending', 'pending')], default='pending')
 
     def __str__(self):
         return self.pengguna.nama
+
 
 
 
@@ -134,8 +148,9 @@ class Transaksi(models.Model):
     tgl_transaksi = models.DateTimeField()
     pengguna = models.ForeignKey('Pengguna', on_delete=models.CASCADE)
     metode_pembayaran = models.ForeignKey('MetodePembayaran', on_delete=models.CASCADE)
-    bukti_pembayaran = models.CharField(max_length=255)
-    status = models.CharField(max_length=20, choices=[('mengunggu', 'mengunggu'), ('lunas', 'lunas'), ('belum lunas', 'belum lunas')])
+    bukti_pembayaran = models.ImageField(upload_to='bukti_pembayaran/', blank=True, null=True)
+    alamat = models.CharField(max_length=255, null=True)
+    status = models.CharField(max_length=20, choices=[('menunggu', 'menunggu'), ('lunas', 'lunas'), ('belum lunas', 'belum lunas')])
 
     def __str__(self):
         return f'Transaksi {self.id}'
@@ -144,10 +159,12 @@ class Transaksi(models.Model):
 class Kelas(models.Model):
     id = models.AutoField(primary_key=True)
     nama_kelas = models.CharField(max_length=255)
-    kategori_kelas = models.OneToOneField('Kategori', on_delete=models.CASCADE, related_name='kelas_detail')
+    kategori_kelas = models.ForeignKey('Kategori', on_delete=models.CASCADE, related_name='kelas_detail')
     mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE)
-    deskripsi = models.CharField(max_length=255)
-    tipe_kelas = models.CharField(max_length=10, choices=[('hybrid', 'hybrid'), ('online', 'online'), ('offline', 'offline')])
+    deskripsi = models.CharField(max_length=255, null=True)
+    foto = models.ImageField(upload_to='foto_kelas/', blank=True, null=True)
+    silabus = models.CharField(max_length=255, null=True)
+    tipe_kelas = models.CharField(max_length=10, choices=[('hybrid', 'hybrid'), ('online', 'online'), ('offline', 'offline')], default='online')
 
     def __str__(self):
         return self.nama_kelas
@@ -167,7 +184,36 @@ class PengalamanOrganisasi(models.Model):
     id = models.AutoField(primary_key=True)
     mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE)
     nama = models.CharField(max_length=255)
-    bukti = models.CharField(max_length=255)
+    tempat = models.CharField(max_length=255, null=True)
+    waktu = models.CharField(max_length=255, null=True)
+    bukti = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return f'Pengalaman Organisasi {self.id}'
+    
+
+
+class skills(models.Model):
+    id = models.AutoField(primary_key=True)
+    nama = models.CharField(max_length=255)
+    foto = models.ImageField(upload_to='foto_skill/', blank=True, null=True)
+
+    def __str__(self):
+        return f'skill {self.id}'
+    
+class skill_mentor(models.Model):
+    id = models.AutoField(primary_key=True)
+    mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE)
+    skill = models.ForeignKey('skills', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'skill mentor {self.id}'
+    
+class project_mentor(models.Model):
+    id = models.AutoField(primary_key=True)
+    mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE)
+    nama = models.CharField(max_length=255)
+    foto = models.ImageField(upload_to='foto_project/', blank=True, null=True)
+
+    def __str__(self):
+        return f'project mentor {self.id}'
