@@ -17,7 +17,7 @@ def register_view(request):
     # if login redirect to home
     token = request.COOKIES.get('jwt')
     if token:
-        return redirect('home')
+        return redirect('beranda')
     
 
     # if request.method == 'POST':
@@ -48,23 +48,23 @@ def register_view(request):
 
         if nama_pengguna and username and email and no_telp and sandi:
             if Pengguna.objects.filter(email=email).exists():
-                return render(request, 'register_z.html', {'error': 'Email sudah digunakan'})
+                return render(request, 'register.html', {'error': 'Email sudah digunakan'})
             
             hashed_password = bcrypt.hashpw(sandi.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
             pengguna = Pengguna(nama=nama_pengguna, username=username, email=email, no_telp=no_telp, sandi=hashed_password, role=role)
             pengguna.save()
-            return redirect('login')
+            return redirect('statusregister')
     
     context = {
         'page_title': 'Register'
     }
-    return render(request, 'register_z.html', context)
+    return render(request, 'register.html', context)
 
 def login_view(request):
     # if login redirect to home
     token = request.COOKIES.get('jwt')
     if token:
-        return redirect('home')
+        return redirect('beranda')
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -87,7 +87,7 @@ def login_view(request):
             token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
             # Set cookie JWT pada respons redirect
-            response = redirect('home')  # Ubah 'home_view' dengan nama view setelah login
+            response = redirect('beranda')  # Ubah 'home_view' dengan nama view setelah login
             response.set_cookie('jwt', token, httponly=True)  # Secure=True jika menggunakan HTTPS
             return response
         else:
@@ -324,10 +324,83 @@ def upload_bukti_pembayaran(request, transaksi_id):
     return redirect('aktifitas  ')
 
 
+# def beranda_view(request):
+#     token = request.COOKIES.get('jwt') 
+
+#     # if not token
+#     #     return redirect('login')
+#     pengguna = None
+
+#     try:
+#         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+#     except jwt.ExpiredSignatureError:
+#         return redirect('login')
+    
+#     pengguna = Pengguna.objects.get(id=payload['id'])
+
+#     total_mentor = Mentor.objects.count()
+#     total_kelas = Kelas.objects.count()
+#     list_kategori = Kategori.objects.all()
+#     top_mentors = Mentor.objects.all()[:3] 
+#     for mentor in top_mentors:
+#         # Mengambil salah satu kelas yang diajar oleh mentor
+#         kelas_mentor = Kelas.objects.filter(mentor=mentor).first()
+
+#         # Menambahkan informasi ke dalam instance mentor
+#         mentor.foto_pengguna = mentor.pengguna.foto  # Asumsikan 'foto' adalah field yang menyimpan URL foto pengguna
+#         mentor.salah_satu_kelas = kelas_mentor       # Menyimpan objek Kelas sebagai salah satu kelas yang diajar oleh mentor
+#         mentor.total_kelas = mentor.kelas_set.count()
+
+#     context = {
+#         'pengguna': pengguna,
+#         'total_mentor': total_mentor,
+#         'total_kelas': total_kelas,
+#         'list_kategori': list_kategori,
+#         'top_mentors': top_mentors,
+#         'page_title': 'Home',
+#     }
+    
+#     return render(request, 'beranda.html', context)
+
 def beranda_view(request):
+    token = request.COOKIES.get('jwt')
+
+    pengguna = None
+    if token:
+        try:
+            # Konversi token ke bytes jika belum dalam bentuk bytes
+            if isinstance(token, str):
+                token = token.encode('utf-8')
+            
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            pengguna = Pengguna.objects.get(id=payload['id'])
+        except jwt.ExpiredSignatureError:
+            return redirect('login')
+        except jwt.InvalidTokenError:
+            return redirect('login')
+
+    total_mentor = Mentor.objects.count()
+    total_kelas = Kelas.objects.count()
+    list_kategori = Kategori.objects.all()
+    top_mentors = Mentor.objects.all()[:3]
+    for mentor in top_mentors:
+        # Mengambil salah satu kelas yang diajar oleh mentor
+        kelas_mentor = Kelas.objects.filter(mentor=mentor).first()
+
+        # Menambahkan informasi ke dalam instance mentor
+        mentor.foto_pengguna = mentor.pengguna.foto  # Asumsikan 'foto' adalah field yang menyimpan URL foto pengguna
+        mentor.salah_satu_kelas = kelas_mentor       # Menyimpan objek Kelas sebagai salah satu kelas yang diajar oleh mentor
+        mentor.total_kelas = mentor.kelas_set.count()
+
     context = {
-        'page_title': 'Home'
+        'pengguna': pengguna,
+        'total_mentor': total_mentor,
+        'total_kelas': total_kelas,
+        'list_kategori': list_kategori,
+        'top_mentors': top_mentors,
+        'page_title': 'Home',
     }
+
     return render(request, 'beranda.html', context)
 
 def status_register_view(request):
@@ -349,18 +422,102 @@ def status_transaksi_view (request):
     return render(request, 'status_transaksi.html', context)
 
 def cari_mentor_view(request):
-    mentors = range(8)
+    token = request.COOKIES.get('jwt')
+
+    pengguna = None
+    if token:
+        try:
+            # Konversi token ke bytes jika belum dalam bentuk bytes
+            if isinstance(token, str):
+                token = token.encode('utf-8')
+            
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            pengguna = Pengguna.objects.get(id=payload['id'])
+        except jwt.ExpiredSignatureError:
+            return redirect('login')
+        except jwt.InvalidTokenError:
+            return redirect('login')
+        
+    list_kategori = Kategori.objects.all()
+    
+    # Mengambil filter kategori dari parameter URL jika ada
+    kategori_id = request.GET.get('kategori')
+    nama_mentor = request.GET.get('nama_mentor')
+
+    mentors = Mentor.objects.all()
+
+    if kategori_id:
+        mentors = mentors.filter(kelas__kategori_kelas_id=kategori_id).distinct()
+
+    if nama_mentor:
+        mentors = mentors.filter(pengguna__nama__icontains=nama_mentor).distinct()
+
+    # Menambahkan informasi tambahan untuk setiap mentor
+    for mentor in mentors:
+        mentor.foto_pengguna = mentor.pengguna.foto
+        mentor.total_kelas = mentor.kelas_set.count()
+        # Mengambil semua kategori kelas yang diajar oleh mentor
+        mentor.kategori_kelas_list = list(set(kelas.kategori_kelas for kelas in mentor.kelas_set.all()))
 
     context = {
+        'pengguna': pengguna,
+        'list_kategori': list_kategori,
         'mentors': mentors,
+        'selected_kategori': kategori_id,
+        'nama_mentor': nama_mentor,
         'page_title': 'Cari Mentor'
     }
+    # mentors = range(8)
+
+    # context = {
+    #     'mentors': mentors,
+    #     'page_title': 'Cari Mentor'
+    # }
     return render(request, 'cari_mentor.html', context)
 
-def detail_mentor_view(request):
+def detail_mentor_view(request, mentor_id):
+    token = request.COOKIES.get('jwt')
+
+    pengguna = None
+    if token:
+        try:
+            # Konversi token ke bytes jika belum dalam bentuk bytes
+            if isinstance(token, str):
+                token = token.encode('utf-8')
+            
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            pengguna = Pengguna.objects.get(id=payload['id'])
+        except jwt.ExpiredSignatureError:
+            return redirect('login')
+        except jwt.InvalidTokenError:
+            return redirect('login')
+        
+    mentor = get_object_or_404(Mentor, id=mentor_id)
+    kelas_list = Kelas.objects.filter(mentor=mentor)
+    pengalaman_kerja_list = PengalamanKerja.objects.filter(mentor=mentor)
+    pengalaman_mengajar_list = PengalamanMengajar.objects.filter(mentor=mentor)
+    kontak = KontakMentor.objects.get(mentor=mentor)
+    skills_list = skill_mentor.objects.filter(mentor=mentor)
+    projects_list = project_mentor.objects.filter(mentor=mentor)
+    penilaian_list = Penilaian.objects.filter(kelas__mentor=mentor)
+
+
+    for kelas in kelas_list:
+        kelas.jumlah_jadwal = PaketKelas.objects.filter(id_kelas=kelas).count()
+
     context = {
+        'mentor': mentor,
+        'kelas_list': kelas_list,
+        'pengalaman_kerja_list': pengalaman_kerja_list,
+        'pengalaman_mengajar_list': pengalaman_mengajar_list,
+        'kontak': kontak,
+        'skills_list': skills_list,
+        'projects_list': projects_list,
+        'penilaian_list': penilaian_list,
+        'pengguna': pengguna,
         'page_title': 'Detail Mentor'
     }
+
     return render(request, 'detail_mentor.html', context)
 
 def detail_kelas_view(request):

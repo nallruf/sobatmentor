@@ -7,16 +7,25 @@
 
   <div class="d-flex flex-column align-items-center mt-4 mx-lg-5">
     <h5>Cari Nama Mentor</h5>
-    <div class="input-group my-2" style="max-width: 1034px">
-      <input
-        type="text"
-        class="form-control text-center"
-        placeholder="Search"
-        aria-label="Cari nama mentor"
-      />
-    </div>
+    <form
+      method="GET"
+      action="{% url 'carimentor' %}"
+      class="d-flex flex-column align-items-center w-100"
+    >
+      <div class="input-group my-2" style="max-width: 1034px">
+        <input
+          type="text"
+          class="form-control text-center"
+          placeholder="Search"
+          name="nama_mentor"
+          id="nama_mentor"
+          aria-label="Cari nama mentor"
+          value="{{ nama_mentor|default_if_none:'' }}"
+        />
+      </div>
+    </form>
   </div>
-  
+
   <div class="d-flex flex-column align-items-center mt-4 mx-lg-5">
     <h5>Kategori Kelas</h5>
     <div class="d-flex align-items-center mt-2">
@@ -26,30 +35,12 @@
         width="20"
         class="me-2"
       />
-      <button type="button" class="btn {% if status == 'semua' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        Semua
-      </button>
-      <button type="button" class="btn {% if status == 'smp' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        SMP
-      </button>
-      <button type="button" class="btn {% if status == 'sma' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        SMA
-      </button>
-      <button type="button" class="btn {% if status == 'writing' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        Writing
-      </button>
-      <button type="button" class="btn {% if status == 'english' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        English
-      </button>
-      <button type="button" class="btn {% if status == 'webdev' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        Web Development
-      </button>
-      <button type="button" class="btn {% if status == 'design' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        Design
-      </button>
-      <button type="button" class="btn {% if status == 'speaking' %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
-        Speaking
-      </button>
+      <a href="{% url 'carimentor' %}" class="btn {% if not selected_kategori %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">Semua</a>
+      {% for kategori in list_kategori %}
+        <a href="{% url 'carimentor' %}?kategori={{ kategori.id }}" class="btn {% if selected_kategori|stringformat:"s" == kategori.id|stringformat:"s" %}btn-primary text-white{% else %}btn-outline-primary text-black{% endif %} me-2">
+            {{ kategori.nama_kategori }}
+        </a>
+      {% endfor %}
       <img
         src="{% static 'assets/icons/chevron-right.svg' %}"
         alt="Arrow Right Icon"
@@ -59,11 +50,44 @@
     </div>
   </div>
   
-
+  {% for mentor in mentors %}
   <div class="mt-5 d-flex flex-wrap justify-content-center gap-4 px-1">
-    {% for mentor in mentors %} 
-      {% include 'partials/cari_card.html' %} 
-    {% endfor %}
+    <a href="{% url 'detail_mentor' mentor.id %}" class="text-decoration-none">
+      <div class="position-relative" style="width: 21.25rem; height: 26.7rem">
+        <div>
+          <img
+            src="{{ mentor.foto_pengguna }}"
+            alt="{{ mentor.pengguna.nama }}"
+            class="rounded-4 object-fit-cover"
+            style="width: 21.25rem; height: 26.74825rem"
+          />
+        </div>
+        <div class="position-absolute bottom-0 mb-3 w-100">
+          <div class="d-flex justify-content-between align-baseline">
+            <div class="justify-content-start">
+              <h5 class="display-xs-medium p-2 bg--brand-solid text-white">
+                {{ mentor.pengguna.nama }}
+              </h5>
+              <h6
+                class="text-md-reguler p-2 bg-white text--brand-secondary"
+                style="width: fit-content"
+              >
+                {% for kategori in mentor.kategori_kelas_list %} 
+                {{ kategori.nama_kategori }} 
+                {% endfor %}
+              </h6>
+            </div>
+            <div class="d-flex flex-column justify-content-end text-end me-3">
+              <h5 class="display-sm-semibold text-white">
+                {{ mentor.total_kelas }}
+              </h5>
+              <p class="text-md-semibold text-white">Class</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
   </div>
+  {% endfor %}
 </div>
 {% endblock %}

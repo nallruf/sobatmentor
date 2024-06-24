@@ -1,6 +1,4 @@
-{% extends "base.html" %} 
-{% load static %} 
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="container-fluid">
   <div class="row justify-content-center align-items-center vh-100">
     <div class="col-12 col-md-8 col-lg-6">
@@ -11,41 +9,71 @@
         </h5>
 
         <div style="padding-left: 160px; padding-right: 160px">
-          <form method="post" class="fw-semibold">
+          <form
+            method="post"
+            action="{% url 'register' %}"
+            enctype="multipart/form-data"
+            class="fw-semibold"
+          >
             {% csrf_token %}
             <div class="form-group d-flex flex-column gap-2">
-              <label for="name"
+              <label for="nama"
                 >Nama <span style="color: #f14437">*</span></label
               >
-              <input type="text" class="form-control" id="name" required />
+              <input
+                type="text"
+                class="form-control"
+                id="nama"
+                name="nama"
+                required
+              />
             </div>
             <div class="form-group d-flex flex-column gap-2 mt-4">
               <label for="username"
                 >Username <span style="color: #f14437">*</span></label
               >
-              <input type="text" class="form-control" id="username" required />
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                required
+              />
             </div>
             <div class="form-group d-flex flex-column gap-2 mt-4">
               <label for="email"
                 >Email <span style="color: #f14437">*</span></label
               >
-              <input type="email" class="form-control" id="email" required />
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
             </div>
             <div class="form-group d-flex flex-column gap-2 mt-4">
-              <label for="notelp"
+              <label for="no_telp"
                 >Nomor WhatsAapp <span style="color: #f14437">*</span></label
               >
-              <input type="text" class="form-control" id="notelp" required />
+              <input
+                type="text"
+                class="form-control"
+                id="no_telp"
+                name="no_telp"
+                required
+              />
             </div>
             <div class="form-group d-flex flex-column mt-4 position-relative">
-              <label for="password"
+              <label for="sandi"
                 >Password <span style="color: #f14437">*</span></label
               >
               <div class="position-relative">
                 <input
                   type="password"
                   class="form-control mt-2 pe-5"
-                  id="password"
+                  id="sandi"
+                  name="sandi"
                   required
                 />
                 <small
@@ -67,7 +95,7 @@
                 />
               </div>
             </div>
-            <div
+            <!-- <div
               class="form-group d-flex flex-column gap-2 mt-4 position-relative"
             >
               <label for="conf-password"
@@ -94,7 +122,7 @@
                   "
                 />
               </div>
-            </div>
+            </div> -->
 
             <div class="d-flex flex-column mt-4">
               <button type="submit" class="btn btn-primary">Sign In</button>

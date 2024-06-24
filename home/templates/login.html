@@ -9,29 +9,31 @@
         </h5>
 
         <div style="padding-left: 160px; padding-right: 160px">
-          <form method="post" class="fw-semibold">
+          <form method="post" action="{% url 'login' %}" class="fw-semibold">
             {% csrf_token %}
             <div class="form-group d-flex flex-column gap-2">
-              <label for="email"
-                >Alamat Email <span style="color: #f14437">*</span></label
+              <label for="username"
+                >Username <span style="color: #f14437">*</span></label
               >
               <input
-                type="email"
+                type="text"
                 class="form-control"
-                id="email"
-                placeholder="Masukkan email anda"
+                id="username"
+                name="username"
+                placeholder="Masukkan Username Anda"
                 style="color: #a7b0b9"
                 required
               />
             </div>
             <div class="form-group d-flex flex-column gap-2 mt-4">
-              <label for="password"
+              <label for="sandi"
                 >Password <span style="color: #f14437">*</span></label
               >
               <input
                 type="password"
                 class="form-control"
-                id="password"
+                id="sandi"
+                name="sandi"
                 placeholder="********"
                 required
               />

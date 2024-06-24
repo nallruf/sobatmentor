@@ -20,7 +20,25 @@
     opacity: 1; /* Memperjelas tombol saat dihover */
   }
 </style>
-
+<button
+  class="bg--brand-solid border--brand-solid scroll-to-top"
+  style="display: none"
+>
+  <svg
+    class=""
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    fill="#fff"
+    class="bi bi-arrow-up-short"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+    />
+  </svg>
+</button>
 <div class="main-layout">
   <section>
     <div class="header text-center">
@@ -34,7 +52,7 @@
       </p>
       <div class="mt-4">
         <a
-          href=""
+          href="{% url 'carimentor' %}"
           class="button-link text-md-medium text--white bg--brand-solid me-2"
           >Cari Mentor Sekarang</a
         >
@@ -102,27 +120,27 @@
               class="d-flex flex-sm-row flex-lg-column gap-2 column-gap-sm-3 justify-content-center align-items-center text-center border border--warning rounded-4 bg-white shadow-sm p-2"
               style="width: 75%; height: 10rem"
             >
-              <h2
-                class="display-md-bold text--brand-secondary"
-                id="mentor"
-              ></h2>
+              <h2 class="display-md-bold text--brand-secondary" id="mentor">
+                {{ total_mentor }}
+              </h2>
               <p class="text-md-reguler">Pilihan Mentor Unggulan</p>
             </div>
             <div
               class="d-flex flex-column gap-2 justify-content-center text-center border border--tertiary rounded-4 bg-white shadow-sm p-2"
               style="width: 75%; height: 10rem"
             >
-              <h2 class="display-md-bold text--brand-secondary" id="class"></h2>
+              <h2 class="display-md-bold text--brand-secondary" id="class">
+                {{ total_kelas }}
+              </h2>
               <p class="text-md-reguler">Pilihan Kelas Favorite</p>
             </div>
             <div
               class="d-flex flex-column gap-2 justify-content-center text-center border border--tertiary rounded-4 bg-white shadow-sm p-2"
               style="width: 75%; height: 10rem"
             >
-              <h2
-                class="display-md-bold text--brand-secondary"
-                id="trusted"
-              ></h2>
+              <h2 class="display-md-bold text--brand-secondary" id="trusted">
+                100%
+              </h2>
               <p class="text-md-reguler">Kepercayaan & Keamanan</p>
             </div>
           </div>
@@ -142,7 +160,7 @@
           </p>
         </div>
         <a
-          href="#"
+          href="{% url 'carimentor' %}"
           class="button-link text-md-medium text--brand-primary border border--brand-solid d-inline-flex align-items-center"
         >
           Temukan Mentormu
@@ -166,14 +184,15 @@
       </div>
       <div>
         <div class="d-flex align-items-end gap-3">
+          {% for mentor in top_mentors %}
           <div
             class="position-relative"
             style="width: 21.25rem; height: 26.7rem"
           >
             <div>
               <img
-                src="{% static 'assets/images/mentor1.svg' %}"
-                alt=""
+                src="{{ mentor.foto_pengguna.url }}"
+                alt="{{ mentor.pengguna.nama }}"
                 class="rounded-4 object-fit-cover"
                 style="width: 21.25rem; height: 26.74825rem"
               />
@@ -182,45 +201,26 @@
               <div class="d-flex justify-content-between align-baseline">
                 <div class="justify-content-start">
                   <h5 class="display-xs-medium p-2 bg--brand-solid text-white">
-                    Lilia Devina
+                    {{ mentor.pengguna.nama }}
                   </h5>
                   <h6
                     class="text-md-reguler p-2 bg-white text--brand-secondary"
                   >
-                    Kelas Menulis
+                    {{ mentor.salah_satu_kelas.nama_kelas }}
                   </h6>
                 </div>
                 <div
                   class="d-flex flex-column justify-content-end text-end me-3"
                 >
-                  <h5 class="display-sm-semibold text-white">12</h5>
+                  <h5 class="display-sm-semibold text-white">
+                    {{ mentor.total_kelas }}
+                  </h5>
                   <p class="text-md-semibold text-white">Class</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="position-relative">
-            <div>
-              <img
-                src="{% static 'assets/images/mentor1.svg' %}"
-                alt=""
-                class="rounded-4 object-fit-cover"
-                style="height: 22.5rem; width: 7rem"
-              />
-            </div>
-            <!-- <h6 class="position-absolute bottom-0 start-0 text-xs-semibold text-white" style="transform: rotate(-90deg)">Kelas Bahasa Asing</h6> -->
-          </div>
-          <div class="position-relative">
-            <div>
-              <img
-                src="{% static 'assets/images/mentor1.svg' %}"
-                alt=""
-                class="rounded-4 object-fit-cover"
-                style="height: 22.5rem; width: 7rem"
-              />
-            </div>
-            <!-- <h6 class="position-absolute bottom-0 start-0 text-xs-semibold text-white" style="transform: rotate(-90deg)">Kelas Bahasa Asing</h6> -->
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -230,72 +230,13 @@
     <div class="text-center mt-5 pt-5">
       <h2 class="mb-4">Kelas Pilihan</h2>
       <div class="pb-3 mb-4">
-        <div class="row gap-4 row-gap-sm-3 mb-3">
-          <!-- <div class="d-flex flex-column flex-md-row gap-4 row-gap-sm-3"> -->
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-        </div>
-        <div class="row gap-4 row-gap-sm-3">
-          <!-- <div class="d-flex flex-column flex-md-row gap-4 row-gap-sm-3"> -->
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-          <a
-            href=""
-            class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
-            >UI UX Design 🎨</a
-          >
-        </div>
+        {% for kategori in list_kategori %}
+        <a
+          href=""
+          class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
+          >{{ kategori.nama_kategori }}</a
+        >
+        {% endfor %}
       </div>
       <a
         href=""
