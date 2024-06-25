@@ -184,7 +184,7 @@
       </div>
       <div>
         <div class="d-flex align-items-end gap-3">
-          {% for mentor in top_mentors %}
+          {% for mentor in top_mentors %} {% if forloop.first %}
           <div
             class="position-relative"
             style="width: 21.25rem; height: 26.7rem"
@@ -220,7 +220,18 @@
               </div>
             </div>
           </div>
-          {% endfor %}
+          {% else %}
+          <div class="position-relative">
+            <div>
+              <img
+                src="{{ mentor.foto_pengguna.url }}"
+                alt="{{ mentor.pengguna.nama }}"
+                class="rounded-4 object-fit-cover"
+                style="height: 22.5rem; width: 7rem"
+              />
+            </div>
+          </div>
+          {% endif %} {% endfor %}
         </div>
       </div>
     </div>
@@ -232,7 +243,7 @@
       <div class="pb-3 mb-4">
         {% for kategori in list_kategori %}
         <a
-          href=""
+          href="{% url 'carimentor' %}?kategori={{ kategori.id }}"
           class="col button-link text-md-medium text--primary border border--tertiary bg--primary shadow-sm"
           >{{ kategori.nama_kategori }}</a
         >

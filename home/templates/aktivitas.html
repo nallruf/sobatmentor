@@ -6,48 +6,246 @@
   </div>
 
   <div class="mt-4 row">
-    <div class="d-flex flex-column col-lg-4 gap-4">
-      <div style="width: 295px; height: 170px">
-        <img
-          src="{% static 'assets/images/photo4.jpg' %}"
-          alt="Avatar"
-          class="rounded-top-3 object-fit-cover"
-          style="width: 295px; height: 92px"
-        />
-        <div class="p-3 rounded-bottom-3 shadow-sm">
-          <p class="fw-semibold">Web Development dengan Laravel</p>
-          <p>Pending</p>
-        </div>
-      </div>
-      <div style="width: 295px; height: 170px">
-        <img
-          src="{% static 'assets/images/photo4.jpg' %}"
-          alt="Avatar"
-          class="rounded-top-3 object-fit-cover"
-          style="width: 295px; height: 92px"
-        />
-        <div class="p-3 rounded-bottom-3 shadow-sm">
-          <p class="fw-semibold">UI UX Design</p>
-          <p>Mei - Juli 2024</p>
-        </div>
-      </div>
+    <div class="d-flex flex-column col-lg-3 gap-4">
+      {% for transaksi in transaksi_list %}
+        <a href="{% url 'aktivitas' %}?transaksi={{ transaksi.id }}" style="width: 295px; height: 170px;" class="text-decoration-none text-black">
+          <div class="card {% if transaksi_selected_id.id == transaksi.id %}border-primary border-2{% else %}{% endif %}">
+            <img
+              src="{{ transaksi.detailtransaksi_set.first.kelas.foto.url }}"
+              alt="Avatar"
+              class="rounded-top-3 object-fit-cover"
+              style="width: 295px; height: 92px"
+            />
+            <div class="p-3 rounded-bottom-3 shadow-sm">
+              <p class="fw-semibold {% if transaksi_selected_id.id == transaksi.id %}text-primary border-2{% else %}text-black{% endif %}">{{ transaksi.detailtransaksi_set.first.kelas.nama_kelas }}</p>
+              <p>{{ transaksi.status }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
     </div>
-    <div class="col-lg-8">
-      <div class="card p-4">
+
+    <hr class="vertical-hr" />
+
+    {% if transaksi_selected %}
+    <div class="col-lg-7">
+      {% for transaksi in transaksi_selected %}
+      <div class="card p-4" style="box-shadow: 0 0px 4px rgba(0, 0, 0, 0.25)">
         <img
-          src="{% static 'assets/images/photo4.jpg' %}"
+          src="{{ transaksi.detailtransaksi_set.first.kelas.foto.url }}"
           alt="Avatar"
-          class="rounded-top-3 object-fit-cover w-100"
+          class="rounded-3 object-fit-cover w-100"
           style="height: 116px"
         />
-        <div class="card p-4">
-          <div>
-            <h3>Web Development dengan Laravel (Pemula)</h3>
+
+        <div class="card p-4 mt-4" style="border: 2px solid #85caff">
+          <div class="d-flex flex-column gap-2">
+            <div class="d-flex align-items-center gap-3">
+              <h5>
+                {{ transaksi.detailtransaksi_set.first.kelas.nama_kelas }}
+              </h5>
+              <p
+                style="background-color: #dcfae6; border-radius: 8px"
+                class="px-3"
+              >
+                {% if transaksi.status == 'menunggu' %} 
+                Menunggu Approve Mentor
+                {% elif transaksi.status == 'belum lunas' %} 
+                Di approve Mentor, Silahkan Selesaikan Pembayaran 
+                {% else %} 
+                Selamat Belajar 
+                {% endif %}
+              </p>
+            </div>
+            <p>ID Kelas : {{ transaksi.detailtransaksi_set.first.kelas.id }}</p>
           </div>
+
+          <div class="d-flex flex-column mt-4 gap-2 align-items-start">
+            <h5>Detail Kelas</h5>
+            <div class="d-flex flex-column gap-2">
+              <p>{{ transaksi.detailtransaksi_set.first.kelas.deskripsi }}</p>
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <p style="min-width: 50px">Jumlah Pertemuan</p>
+                  <span class="fw-semibold">
+                    : {{ transaksi.detailtransaksi_set.first.paket_kelas.jumlah_pertemuan }}</span
+                  >
+                </div>
+                <div class="d-flex">
+                  <p style="min-width: 50px">Hari Pertemuan</p>
+                  <span class="fw-semibold">
+                    : {{ transaksi.detailtransaksi_set.first.paket_kelas.hari }}</span
+                  >
+                </div>
+                <div class="d-flex">
+                  <p style="min-width: 50px">Waktu Pertemuan</p>
+                  <span class="fw-semibold">
+                    : {{ transaksi.detailtransaksi_set.first.paket_kelas.jam }}</span
+                  >
+                </div>
+              </div>
+            </div>
+            <a
+              class="btn btn-primary rounded-3"
+              href="{{ transaksi.detailtransaksi_set.first.kelas.silabus }}"
+              >Unduh Silabus</a
+            >
+          </div>
+
+          <div class="d-flex flex-column mt-4 gap-2 align-items-start">
+            <h5>Detail Mentor</h5>
+
+            <div class="d-flex flex-wrap gap-3">
+              <img
+                src="{{ transaksi.detailtransaksi_set.first.kelas.mentor.pengguna.foto.url }}"
+                alt=""
+                class="rounded-3 object-fit-cover"
+                style="height: 98px; width: 94px"
+              />
+              <div>
+                <div class="d-flex">
+                  <p style="min-width: 80px">Nama</p>
+                  <span
+                    >: {{ transaksi.detailtransaksi_set.first.kelas.mentor.pengguna.nama }}</span
+                  >
+                </div>
+                <div class="d-flex">
+                  <p style="min-width: 80px">ID Mentor</p>
+                  <span
+                    >: {{ transaksi.detailtransaksi_set.first.kelas.mentor.id }}</span
+                  >
+                </div>
+                <a
+                  class="btn btn-primary rounded-3 px-4 mt-2"
+                  href="https://wa.me/{{ transaksi.detailtransaksi_set.first.kelas.mentor.pengguna.no_telp }}"
+                >
+                  Hubungi Mentor
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% if transaksi.status == 'menunggu' %}
+        <div
+          class="card p-4 mt-4"
+          style="border: 2px solid #85caff"
+        >
+          <div class="d-flex flex-column gap-2">
+            <h5>Mohon Tunggu</h5>
+            <p>
+              Mohon Tunggu Sampai di Approve oleh Mentor
+            </p>
+          </div>
+        </div>
+
+        {% elif transaksi.status == 'belum lunas' %}
+        <div class="card p-4 mt-4" style="border: 2px solid #85caff">
+          <div class="d-flex flex-column gap-2">
+            <h5>Upload Bukti transfer</h5>
+            <p>Silahkan transfer untuk melanjutkan</p>
+            <div class="d-flex">
+              <p style="min-width: 80px">Nama Bank</p>
+              <span>: {{ transaksi.metode_pembayaran.metode_pembayaran }}</span>
+            </div>
+            <div class="d-flex">
+              <p style="min-width: 80px">No Rekening</p>
+              <span>: {{ transaksi.metode_pembayaran.nomor_rekening }}</span>
+            </div>
+            <form action="{% url 'upload_bukti_pembayaran' transaksi.id %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input
+                type="file"
+                name="bukti_pembayaran"
+                accept="image/*"
+                class="form-control mt-2 mb-3"
+              />
+              <button type="submit" class="btn btn-primary rounded-3 w-100">
+                Upload
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {% else %}
+        {% if penilaian_list %}
+        <div class="card p-4 mt-4" style="border: 2px solid #85caff">
+          <h4>ANDA SUDAH MEMBERIKAN KOMENTAR</h4>
+        </div>
+        {% else %}
+        <div class="card p-4 mt-4" style="border: 2px solid #85caff">
+          <div class="d-flex flex-column gap-2">
+            <h5>Beri Penilaian</h5>
+            <p>
+              Berikan penilaian untuk kelas mentoring yang sudah kamu lakukan
+              bersama mentor. Penilaian diberikan sebagai apresiasi dan bahan
+              evaluasi.
+            </p>
+            <form method="post" action="{% url 'nilai' transaksi.detailtransaksi_set.first.kelas.id %}">
+              {% csrf_token %}
+              <div class="form-group mb-3">
+                <label for="rating">Penilaian</label>
+                <select class="form-control" id="penilaian" name="penilaian" required>
+                  <option value="">Pilih penilaian (1-5)</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="form-group mb-3">
+                <label for="komentar">Komentar</label>
+                <textarea class="form-control" id="komentar" name="komentar" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary rounded-3 w-100">Beri Penilaian</button>
+            </form>
+          </div>
+        </div>        
+        {% endif %}
+        <div
+          class="card p-4 mt-4"
+          style="border: 2px solid #fda29b"
+        >
+          <div class="d-flex flex-column gap-2">
+            <h5>Lapor Pengaduan</h5>
+            <p>Lapor pengaduan atas ketidaknyamananmu disini ya!</p>
+            <a
+              class="btn btn-primary rounded-3"
+              style="background-color: #f14437; color: white; border: none"
+              href="https://wa.me/11111111111111111111"
+            >
+              Buat Laporan
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="col-lg-7">
+      <div
+        class="card p-4"
+        style="border: 2px solid #85caff"
+      >
+        <div class="d-flex flex-column gap-2">
+          <h5>Silahkan Pilih Mentoring</h5>
+          <p>Silahkan Pilih Aktivitas Mentoring Aktif</p>
         </div>
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 
+<style>
+  .vertical-hr {
+    border: none;
+    border-left: 1px solid #000;
+    height: auto;
+    width: 0;
+    margin: 0 20px;
+  }
+</style>
 {% endblock %} {% block footer %} {% endblock %}

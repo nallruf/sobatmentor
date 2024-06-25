@@ -14,6 +14,7 @@
             action="{% url 'register' %}"
             enctype="multipart/form-data"
             class="fw-semibold"
+            id="register-form"
           >
             {% csrf_token %}
             <div class="form-group d-flex flex-column gap-2">
@@ -84,7 +85,7 @@
                 <img
                   src="{% static 'assets/icons/eye-off.svg' %}"
                   class="toggle-password"
-                  data-target="#password"
+                  data-target="#sandi"
                   style="
                     position: absolute;
                     top: 50%;
@@ -95,7 +96,7 @@
                 />
               </div>
             </div>
-            <!-- <div
+            <div
               class="form-group d-flex flex-column gap-2 mt-4 position-relative"
             >
               <label for="conf-password"
@@ -107,6 +108,7 @@
                   type="password"
                   class="form-control pe-5"
                   id="conf-password"
+                  name="conf-password"
                   required
                 />
                 <img
@@ -122,10 +124,16 @@
                   "
                 />
               </div>
-            </div> -->
+              <small
+                id="password-match-error"
+                class="form-text fw-normal text-danger"
+                style="display: none"
+                >Password dan Konfirmasi Password harus sama</small
+              >
+            </div>
 
             <div class="d-flex flex-column mt-4">
-              <button type="submit" class="btn btn-primary">Sign In</button>
+              <button type="submit" class="btn btn-primary">Sign Up</button>
             </div>
             <div class="text-center mt-4 fw-normal">
               Sudah punya akun?
@@ -155,5 +163,19 @@
           : "{% static 'assets/icons/eye.svg' %}";
     });
   });
+
+  document
+    .getElementById("register-form")
+    .addEventListener("submit", function (event) {
+      const password = document.getElementById("sandi").value;
+      const confirmPassword = document.getElementById("conf-password").value;
+      const error = document.getElementById("password-match-error");
+      if (password !== confirmPassword) {
+        event.preventDefault();
+        error.style.display = "block";
+      } else {
+        error.style.display = "none";
+      }
+    });
 </script>
 {% endblock %} {% block footer %} {% endblock %}

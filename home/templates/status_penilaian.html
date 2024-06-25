@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% load static %} {% block navbar %} {% endblock %}
+{%block footer %} {% endblock %} {% block content %}
+<div
+  class="container-fluid d-flex flex-column text-center align-items-center justify-content-center vh-100"
+>
+  <img
+    src="{% static 'assets/images/centangbiru.svg' %}"
+    class="imgMain"
+    id="imgMain"
+    style="width: 20.25rem"
+  />
+  <div class="mb-4">
+    <h1 class="mb-2 fw-bold fs-2">
+      Horeee!! <br />Penilaian
+      <span style="color: #079455">Berhasil</span>
+    </h1>
+    <p class="fs-5">
+      Penilaian Diterima <br />
+      Jika terdapat pertanyaan, kritik, atau saran silahkan hubungi kami.
+    </p>
+  </div>
+  <a
+    href="{% url 'aktivitas' %}"
+    class="button-link text-white bg--brand-solid fw-medium"
+    id="btn-signin"
+    >Back to aktivitas</a
+  >
+</div>
+{% endblock %}

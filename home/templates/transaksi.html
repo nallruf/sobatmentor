@@ -11,7 +11,7 @@
       <div class="card shadow-sm px-4 py-3" style="border-color: #1470ef">
         <div class="card-body">
           <h5 class="card-title fw-bold mb-3 fs-4">Info Pemesanan</h5>
-          <form method="post" action="{% url 'submit_booking' %}">
+          <form method="post" action="{% url 'submittransaksi' %}">
             {% csrf_token %}
             <input type="hidden" name="kelas_id" value="{{ kelas.id }}" />
             <input type="hidden" name="paket_id" value="{{ paket.id }}" />
@@ -33,7 +33,8 @@
                 class="form-control mt-2"
                 id="nama"
                 style="background-color: #f0f5f8"
-                value="{{ user.nama }}" readonly
+                value="{{ user.nama }}"
+                readonly
               />
             </div>
 
@@ -55,7 +56,8 @@
                   class="form-control mt-2"
                   id="no_telp"
                   style="background-color: #f0f5f8"
-                  value="{{ user.no_telp }}" readonly
+                  value="{{ user.no_telp }}"
+                  readonly
                 />
               </div>
             </div>
@@ -63,8 +65,11 @@
             <div class="mb-4 d-flex flex-column gap-2">
               <p class="fw-semibold">
                 Panduan Pembayaran
-                <span style="color: #2e90fa" class="fw-semibold"
-                  >Lihat di sini.</span
+                <a
+                  style="color: #2e90fa"
+                  class="fw-semibold text-decoration-none"
+                  href="#"
+                  >Lihat di sini.</a
                 >
               </p>
               <div class="d-flex align-items-center gap-2">

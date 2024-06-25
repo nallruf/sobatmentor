@@ -15,18 +15,37 @@
       class="navbar-link text-md-reguler text--primary"
       >Cari Mentor</a
     >
-    <a href="carikelas" class="navbar-link text-md-reguler text--primary"
-      >Cari Kelas</a
-    >
-    <a href="jadimentor" class="navbar-link text-md-reguler text--primary"
+    <a href="#" class="navbar-link text-md-reguler text--primary">Cari Kelas</a>
+    <a href="#" class="navbar-link text-md-reguler text--primary"
       >Jadi Mentor</a
     >
   </div>
   {% if pengguna %}
-  <div class="nav-profil">
-    <a href="profil" class="button-link text-md-medium text--primary"
-      ><img src="{% static 'assets/icons/user.svg' %}" class="me-2" />Hai, {{ pengguna.nama }}</a
+  <div class="nav-profil position-relative">
+    <a
+      href="#"
+      class="button-link text-md-medium text--primary"
+      id="profile-dropdown-toggle"
     >
+      <img src="{% static 'assets/icons/user.svg' %}" class="me-2" />Hai, {{ pengguna.nama }}
+    </a>
+    <div class="dropdown-menu" id="profile-dropdown-menu" style="display: none">
+      <a
+        href="#"
+        class="dropdown-item text-md-medium text--primary"
+        >Profil</a
+      >
+      <a
+        href="{% url 'aktivitas' %}"
+        class="dropdown-item text-md-medium text--primary"
+        >Aktivitas</a
+      >
+      <a
+        href="{% url 'logout' %}"
+        class="dropdown-item text-md-medium text--brand-primary"
+        >Logout</a
+      >
+    </div>
   </div>
   {% else %}
   <div class="nav-auth">
@@ -43,3 +62,29 @@
   </div>
   {% endif %}
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const profileDropdownToggle = document.getElementById(
+      "profile-dropdown-toggle"
+    );
+    const profileDropdownMenu = document.getElementById(
+      "profile-dropdown-menu"
+    );
+
+    profileDropdownToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      profileDropdownMenu.style.display =
+        profileDropdownMenu.style.display === "none" ? "block" : "none";
+    });
+
+    document.addEventListener("click", function (event) {
+      if (
+        !profileDropdownToggle.contains(event.target) &&
+        !profileDropdownMenu.contains(event.target)
+      ) {
+        profileDropdownMenu.style.display = "none";
+      }
+    });
+  });
+</script>
