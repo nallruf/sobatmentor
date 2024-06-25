@@ -24,7 +24,7 @@ def login_view(request):
         try:
             pengguna = Pengguna.objects.get(username=username)
         except Pengguna.DoesNotExist:
-            return HttpResponse('Invalid username or password', status=400)
+            return redirect('login')
         
         if bcrypt.checkpw(sandi.encode('utf-8'), pengguna.sandi.encode('utf-8')):
             payload = {
@@ -37,7 +37,7 @@ def login_view(request):
             response.set_cookie('jwt', token, httponly=True) 
             return response
         else:
-            return HttpResponse('Invalid username or password', status=400)
+            return redirect('login')
         
     context = {
         'page_title': 'Login'
@@ -115,6 +115,7 @@ def beranda_view(request):
         'list_kategori': list_kategori,
         'top_mentors': top_mentors,
         'page_title': 'Home',
+        
     }
 
     return render(request, 'beranda.html', context)

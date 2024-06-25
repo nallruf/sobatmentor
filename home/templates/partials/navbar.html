@@ -7,12 +7,12 @@
   <div class="nav-fitur">
     <a
       href="{% url 'beranda' %}"
-      class="navbar-link text-md-reguler text--primary active"
+      class="navbar-link text-md-reguler text--primary {% if page_title == 'Home' %}active{% endif %}"
       >Home</a
     >
     <a
       href="{% url 'carimentor' %}"
-      class="navbar-link text-md-reguler text--primary"
+      class="navbar-link text-md-reguler text--primary {% if page_title == 'Cari Mentor' %}active{% endif %} "
       >Cari Mentor</a
     >
     <a href="#" class="navbar-link text-md-reguler text--primary">Cari Kelas</a>
