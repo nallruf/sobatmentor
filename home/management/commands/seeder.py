@@ -18,7 +18,7 @@ class Command(BaseCommand):
         self.seed_penilaian()
         self.seed_pengalaman_kerja()
         self.seed_pengalaman_mengajar()
-        self.seed_pengalaman_organisasi()
+        self.seed_pengalaman_organisasi() 
         self.seed_berkas_mentor()
         self.seed_kontak_mentor()
         self.seed_skills()

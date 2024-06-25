@@ -15,8 +15,8 @@
       class="navbar-link text-md-reguler text--primary {% if page_title == 'Cari Mentor' %}active{% endif %} "
       >Cari Mentor</a
     >
-    <a href="#" class="navbar-link text-md-reguler text--primary">Cari Kelas</a>
-    <a href="#" class="navbar-link text-md-reguler text--primary"
+    <!-- <a href="#" class="navbar-link text-md-reguler text--primary">Cari Kelas</a> -->
+    <a href="{% url 'jadimentor' %}" class="navbar-link text-md-reguler text--primary {% if page_title == 'Jadi Mentor' %}active{% endif %}"
       >Jadi Mentor</a
     >
   </div>
@@ -31,7 +31,7 @@
     </a>
     <div class="dropdown-menu" id="profile-dropdown-menu" style="display: none">
       <a
-        href="#"
+        href="{% url 'profile' %}"
         class="dropdown-item text-md-medium text--primary"
         >Profil</a
       >

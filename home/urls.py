@@ -22,4 +22,7 @@ urlpatterns = [
     path('aktivitas/success/', aktivitas_success_view, name='aktivitassuccess'),
     path('aktivitas/nilai/<int:kelas_id>/', set_nilai, name='nilai'),
     path('aktivitas/nilai/success/', nilai_success_view, name='nilaisuccess'),
+
+    path('jadi-mentor/', jadi_mentor_view, name='jadimentor'),
+    path('profile/', profile_view, name='profile'),
 ]
